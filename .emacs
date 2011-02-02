@@ -25,7 +25,9 @@
 			   (eq system-type 'gnu/linux)
 			   (eq system-type 'linux)
 			   (eq system-type 'berkeley-unix))
-		       "/home/shannog/"
+		       (if (file-accessible-directory-p "/home/shannog/")
+                           "/home/shannog/"
+                         "/home/geoff/")
 		     "c:/home/shannog/") "My home directory.")
 
 (labels ((add-path (p)
