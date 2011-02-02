@@ -1,0 +1,17 @@
+(fset 'CSS-Section-Header
+   (lambda (&optional arg) "Keyboard macro." (interactive "p") (kmacro-exec-ring-item (quote ("/* 15-  15- */" 0 "%d")) arg)))
+(global-set-key "\C-x\C-kC" 'CSS-Section-Header)
+
+(fset 'ada-use-with
+   (lambda (&optional arg) "Keyboard macro." (interactive "p") (kmacro-exec-ring-item (quote ("\346 use" 0 "%d")) arg)))
+(global-set-key "\C-x\C-kUW" 'ada-use-with)
+
+(fset 'retabify
+   (lambda (&optional arg) "Keyboard macro." (interactive "p") (kmacro-exec-ring-item (quote ("	" 0 "%d")) arg)))
+(global-set-key "\C-x\C-kRT" 'retabify)
+
+(fset 'cxx-class-expand
+   (lambda (&optional arg) "Keyboard macro." (interactive "p") (kmacro-exec-ring-item (quote ("class  {	protected:public:};" 0 "%d")) arg)))
+
+(fset 'cxx-accessor-method
+   (lambda (&optional arg) "Keyboard macro." (interactive "p") (kmacro-exec-ring-item (quote ("int get(void) {return bl;};" 0 "%d")) arg)))
