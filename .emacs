@@ -21,14 +21,9 @@
 
 (require 'cl)
 
-(defvar emacs-root (if (or (eq system-type 'cygwin)
-			   (eq system-type 'gnu/linux)
-			   (eq system-type 'linux)
-			   (eq system-type 'berkeley-unix))
-		       (if (file-accessible-directory-p "/home/shannog/")
-                           "/home/shannog/"
-                         "/home/geoff/")
-		     "c:/home/shannog/") "My home directory.")
+(defvar emacs-root (if (file-accessible-directory-p "/home/shannog/")
+		       "/home/shannog/"
+		     "/home/geoff/") "My home directory.")
 
 (labels ((add-path (p)
 		   (add-to-list 'load-path
