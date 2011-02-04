@@ -42,7 +42,11 @@
 (setq completion-ignored-extensions 
       (cons ".ali" (cons ".exe" completion-ignored-extensions)))
 
+(server-start)
+
 ;; Visual Modifications
+
+(set-face-attribute 'default nil :height 110)
 
 (if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
 (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
@@ -51,5 +55,3 @@
 (if window-system
     (color-theme-ez-dark)
   (color-theme-ez-dark-nw))
-
-(server-start)
