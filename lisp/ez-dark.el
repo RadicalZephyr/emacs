@@ -12,7 +12,7 @@
        (bold ((t (:bold t))))
        (bold-italic ((t (:italic t :bold t))))
        (default ((t (nil))))
-       
+
        (font-lock-builtin-face ((t (:foreground "#0c7deb"))))
        (font-lock-comment-face ((t (:italic t :foreground "#c08a20"))))
        (font-lock-comment-delimiter-face ((t (:foreground "#bc020e"))))

@@ -17,7 +17,7 @@
   ;; If you edit it by hand, you could mess it up, so be careful.
   ;; Your init file should contain only one such instance.
   ;; If there is more than one, they won't work right.
- )
+)
 
 (require 'cl)
 
@@ -51,7 +51,7 @@
 
 (column-number-mode)
 
-(linum-mode)
+(global-linum-mode)
 
 (if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
 (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
