@@ -48,7 +48,6 @@
 
 (set-face-attribute 'default nil :height 110)
 
-
 (column-number-mode)
 
 (linum-mode)
