@@ -19,3 +19,5 @@
 
 (global-set-key "\C-\M-r" `isearch-backward-regexp)
 (global-set-key "\C-\M-s" `isearch-forward-regexp)
+(global-unset-key [?\C-/])
+(global-set-key [?\C-/] `undo)
