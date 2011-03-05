@@ -20,6 +20,7 @@
 )
 
 (require 'cl)
+(require 'midnight)
 
 (defvar emacs-root (if (file-accessible-directory-p "/home/shannog/")
 		       "/home/shannog/"
@@ -42,7 +43,10 @@
 (setq completion-ignored-extensions 
       (cons ".ali" (cons ".exe" completion-ignored-extensions)))
 
+;; Daemon/server setup
 (server-start)
+(midnight-delay-set 'midnight-delay "6:30am")
+
 
 ;; Visual Modifications
 

@@ -8,7 +8,7 @@
 
 (global-set-key "\M-n" `goto-line)
 
-(global-set-key "\C-xc" `compile)
+(global-set-key "\C-c\C-x\C-c" `compile)
 (global-set-key "\C-c\C-c" `comment-or-uncomment-region)
 
 (global-set-key [f12] `man)
@@ -19,5 +19,3 @@
 
 (global-set-key "\C-\M-r" `isearch-backward-regexp)
 (global-set-key "\C-\M-s" `isearch-forward-regexp)
-(global-unset-key [?\C-/])
-(global-set-key [?\C-/] `undo)
