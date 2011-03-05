@@ -44,7 +44,6 @@
       (cons ".ali" (cons ".exe" completion-ignored-extensions)))
 
 ;; Daemon/server setup
-(server-start)
 (midnight-delay-set 'midnight-delay "6:30am")
 
 
