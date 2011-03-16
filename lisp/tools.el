@@ -14,16 +14,31 @@ the character typed."
   (cond ((not (= (count-windows) 2)) 
 	 (message "You need exactly 2 windows to do this.")) 
 	(t (let* ((w1 (first (window-list)))
-		  (w2 (second (window-list)))
-		  (b1 (window-buffer w1))
-		  (b2 (window-buffer w2))
-		  (s1 (window-start w1))
-		  (s2 (window-start w2)))
+              (w2 (second (window-list)))
+              (b1 (window-buffer w1))
+              (b2 (window-buffer w2))
+              (s1 (window-start w1))
+              (s2 (window-start w2)))
 	     (set-window-buffer w1 b2)
 	     (set-window-buffer w2 b1)
 	     (set-window-start w1 s2)
-	     (set-window-start w2 s1)))))
+	     (set-window-start w2 s1))))
+         (other-window 1))
 
+(defun rotate-windows ()
+  "If you have more than two windows, rotate them clockwise."
+  (interactive)
+  (cond ((= (count-windows) 1)
+         (message "You need more than one window to do this."))
+;        ((= (count-windows) 2)
+;         (swap-windows))
+        (t (switch-to-buffer (window-buffer 
+                   (car (last (window-list)))))
+           (dotimes (n (- (length (window-list)) 1) nil)
+             (other-window 1)
+             (switch-to-buffer nil))
+           (if (> 2 (count-windows))
+              (other-window -1)))))
 
 ;; Never understood why Emacs doesn't have this function.
 ;;
@@ -68,3 +83,8 @@ the character typed."
   (shell-command cmd)
   (shell-command "rm /tmp/tmp.ps")
   (message (concat "Saved to:  " (buffer-name) ".pdf")))
+
+(defun unfill-paragraph ()
+  (interactive)
+  (let ((fill-column (point-max)))
+  (fill-paragraph nil)))
