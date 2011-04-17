@@ -62,3 +62,5 @@
 (if window-system
     (color-theme-ez-dark)
   (color-theme-ez-dark-nw))
+
+(require 'csharp-mode)
