@@ -7,7 +7,7 @@
   (color-theme-install
    '(color-theme-ez-dark
        ((foreground-color . "#b9d3cf")
-         (background-color . "#232829") 
+         (background-color . "#282828") 
          (background-mode . dark))
        (bold ((t (:bold t))))
        (bold-italic ((t (:italic t :bold t))))
@@ -29,7 +29,7 @@
        (font-lock-warning-face ((t (:bold t :italic nil :underline nil 
                                      :foreground "yellow"))))
        (hl-line ((t (:background "#112233"))))
-       (mode-line ((t (:foreground "#ffffff" :background "#333333"))))
+       (mode-line ((t (:foreground "#ffffff" :background "#293433"))))
        (region ((t (:foreground nil :background "#555555"))))
        (show-paren-match-face ((t (:bold t :foreground "#ffffff" 
                                     :background "#050505")))))))
