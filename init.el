@@ -68,3 +68,8 @@
 (if window-system
     (color-theme-ez-dark)
   (color-theme-ez-dark-nw))
+
+(add-hook 'c-mode-hook
+          '(lambda ()
+             (local-set-key (kbd "C-c C-x C-c") 'compile)
+             (flymake-mode t)))

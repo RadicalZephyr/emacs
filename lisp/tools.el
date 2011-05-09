@@ -88,3 +88,33 @@ the character typed."
   (interactive)
   (let ((fill-column (point-max)))
   (fill-paragraph nil)))
+
+(defun increment-number-at-point ()
+      (interactive)
+      (skip-chars-backward "0123456789")
+      (or (looking-at "[0123456789]+")
+          (error "No number at point"))
+      (replace-match (number-to-string (1+ (string-to-number (match-string 0))))))
+
+(defun msh-add-builtin (name)
+  (interactive "sEnter builtin name: \n")
+  (save-excursion
+    (goto-char (point-min))
+    (let* ((template (concat "int " name "(int argc, char **argv)"))
+           (structstr (concat ",\n    {&" name ", \"" name "\"}"))
+           (countpos (search-forward "BUILTIN_COUNT "))
+           (protopos (search-forward "/* end builtin's */"))
+           (structpos (- (search-forward "} };") 3)))
+      (progn
+        (goto-char structpos)
+        (insert structstr))
+      (progn
+        (goto-char protopos)
+        (move-beginning-of-line 1)
+        (insert template ";\n"))
+      (progn
+        (goto-char countpos)
+        (increment-number-at-point))
+      (progn
+        (goto-char (point-max))
+        (insert "\n" template " {\n\n  return -1;\n}")))))

@@ -10,7 +10,6 @@
 
 (global-set-key "\M-n" `goto-line)
 
-(global-set-key "\C-c\C-x\C-c" `compile)
 (global-set-key "\C-c\C-c" `comment-or-uncomment-region)
 
 (global-set-key [f12] `man)
