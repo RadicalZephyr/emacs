@@ -22,9 +22,10 @@
 (require 'cl)
 (require 'midnight)
 
-(defvar emacs-root (if (file-accessible-directory-p "/home/shannog/")
-		       "/home/shannog/"
-		     "/home/geoff/") "My home directory.")
+(defvar emacs-root 
+  (cond ((file-accessible-directory-p "/home/shannog/") "/home/shannog/")
+        ((file-accessible-directory-p "/Users/geoff/") "/Users/geoff/") 
+        (t "/home/geoff/")) "My home directory.")
 
 (labels ((add-path (p)
 		   (add-to-list 'load-path
@@ -46,7 +47,6 @@
 ;; Daemon/server setup
 (midnight-delay-set 'midnight-delay "6:30am")
 
-
 ;; Visual Modifications
 
 (set-face-attribute 'default nil :height 150)
@@ -62,5 +62,3 @@
 (if window-system
     (color-theme-ez-dark)
   (color-theme-ez-dark-nw))
-
-(require 'csharp-mode)
