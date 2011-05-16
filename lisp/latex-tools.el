@@ -19,3 +19,7 @@
               " \\\\\n"))
     (insert "\\end{array}\\right" right)))
 
+(add-hook 'LaTeX-mode-hook (lambda ()
+                             (local-set-key 
+                              "\C-c\C-m" 
+                              'latex-insert-matrix)))
