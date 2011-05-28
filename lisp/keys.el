@@ -1,6 +1,8 @@
 (global-set-key "%" `goto-match-paren)
 (global-set-key "\C-x\C-b" `switch-to-buffer)
 (global-set-key "\C-x\C-o" `other-window)
+;; Probably shouldn't be here, but what the hell
+(global-set-key "\C-c\C-l" 'edebug-defun)
 
 (global-set-key [kp-subtract] 'undo)
 (global-set-key [insert]    'overwrite-mode)
