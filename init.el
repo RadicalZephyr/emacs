@@ -20,7 +20,6 @@
 )
 
 (require 'cl)
-(require 'midnight)
 
 (defvar emacs-root 
   (cond ((file-accessible-directory-p "/home/shannog/") "/home/shannog/")
@@ -30,19 +29,26 @@
 (labels ((add-path (p)
 		   (add-to-list 'load-path
 				(concat emacs-root p))))
-  (add-path "emacs/macros/")
-  (add-path "emacs/lisp/")
-  (add-path "emacs/color-theme/"))
+  (add-path ".emacs.d/elpa/")
+  (add-path ".emacs.d/macros/")
+  (add-path ".emacs.d/lisp/")
+  (add-path ".emacs.d/color-theme/"))
 
-(load-file "~/emacs/macros/tools.macs")
-(load-file "~/emacs/lisp/keys.el")
-(load-file "~/emacs/lisp/tools.el")
-(load-file "~/emacs/lisp/ez-dark.el")
-(load-file "~/emacs/lisp/ez-dark-nw.el")
+(require 'midnight)
+(require 'package)
+(require 'erlang)
+
+(load-file "~/.emacs.d/macros/tools.macs")
+(load-file "~/.emacs.d/lisp/keys.el")
+(load-file "~/.emacs.d/lisp/tools.el")
+(load-file "~/.emacs.d/lisp/ez-dark.el")
+(load-file "~/.emacs.d/lisp/ez-dark-nw.el")
+(load-file "~/.emacs.d/lisp/latex-tools.el")
+
 
 (setq-default indent-tabs-mode nil)
 (setq completion-ignored-extensions 
-      (cons ".ali" (cons ".exe" completion-ignored-extensions)))
+      (append '(".ali" ".exe" ".bean") completion-ignored-extensions))
 
 ;; Daemon/server setup
 (midnight-delay-set 'midnight-delay "6:30am")

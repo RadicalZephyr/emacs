@@ -19,3 +19,8 @@
 
 (global-set-key "\C-\M-r" `isearch-backward-regexp)
 (global-set-key "\C-\M-s" `isearch-forward-regexp)
+
+;; Swap line upwards
+(global-set-key "\C-xt" (lambda ()
+                           (interactive)
+                           (transpose-lines -1)))
