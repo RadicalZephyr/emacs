@@ -18,7 +18,7 @@
        (font-lock-comment-delimiter-face ((t (:foreground "#ed0212"))))
        (font-lock-constant-face ((t (:bold t :foreground "#729fd0"))))
        (font-lock-doc-string-face ((t (:foreground "#c08a20"))))
-       (font-lock-doc-face ((t (:foreground "gray"))))
+       (font-lock-doc-face ((t (:foreground "grey"))))
        (font-lock-reference-face ((t (:foreground "white"))))
        (font-lock-function-name-face ((t (:bold t :foreground "#458db0"))))
        (font-lock-keyword-face ((t (:bold t :foreground "#ef1322"))))

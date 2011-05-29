@@ -38,6 +38,7 @@
 (require 'package)
 (require 'erlang)
 (require 'flymake-cursor)
+(require 'face-list)
 
 (load-file "~/.emacs.d/macros/tools.macs")
 (load-file "~/.emacs.d/lisp/keys.el")
@@ -71,6 +72,7 @@
 
 (add-hook 'c-mode-hook
           '(lambda ()
+             (subword-mode 1)
              (local-set-key (kbd "C-c C-x C-c") 'compile)
              (local-set-key (kbd "C-x `") '(lambda ()
                                              (interactive)
