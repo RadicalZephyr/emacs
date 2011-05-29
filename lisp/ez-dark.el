@@ -30,6 +30,7 @@
                                      :foreground "yellow"))))
        (hl-line ((t (:background "#112233"))))
        (mode-line ((t (:foreground "#ffffff" :background "#293433"))))
+       (minibuffer ((t (:bold t :background "yellow"))))
        (region ((t (:foreground nil :background "#555555"))))
        (show-paren-match-face ((t (:bold t :foreground "#ffffff" 
                                     :background "#050505")))))))

@@ -100,7 +100,7 @@ the character typed."
   (interactive "sEnter builtin name: \n")
   (save-excursion
     (goto-char (point-min))
-    (let* ((template (concat "int " name "(int argc, char **argv)"))
+    (let* ((template (concat "int " name "(int argc, char **argv, FILE *std[3])"))
            (structstr (concat ",\n    {&" name ", \"" name "\"}"))
            (countpos (search-forward "BUILTIN_COUNT "))
            (protopos (search-forward "/* end builtin's */"))
@@ -117,4 +117,4 @@ the character typed."
         (increment-number-at-point))
       (progn
         (goto-char (point-max))
-        (insert "\n" template " {\n\n  return -1;\n}")))))
+        (insert "\n" template " {\n\n  return 0;\n}")))))

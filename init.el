@@ -45,7 +45,6 @@
 (load-file "~/.emacs.d/lisp/ez-dark-nw.el")
 (load-file "~/.emacs.d/lisp/latex-tools.el")
 
-
 (setq-default indent-tabs-mode nil)
 (setq completion-ignored-extensions 
       (append '(".ali" ".exe" ".bean") completion-ignored-extensions))
@@ -72,4 +71,8 @@
 (add-hook 'c-mode-hook
           '(lambda ()
              (local-set-key (kbd "C-c C-x C-c") 'compile)
+             (local-set-key (kbd "C-x `") '(lambda ()
+                                             (interactive)
+                                             (if (ignore-errors (next-error)) t
+                                               (flymake-goto-next-error))))
              (flymake-mode t)))
