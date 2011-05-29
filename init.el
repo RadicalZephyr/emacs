@@ -37,6 +37,7 @@
 (require 'midnight)
 (require 'package)
 (require 'erlang)
+(require 'flymake-cursor)
 
 (load-file "~/.emacs.d/macros/tools.macs")
 (load-file "~/.emacs.d/lisp/keys.el")
