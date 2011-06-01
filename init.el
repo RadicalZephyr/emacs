@@ -47,6 +47,9 @@
 (load-file "~/.emacs.d/lisp/ez-dark-nw.el")
 (load-file "~/.emacs.d/lisp/latex-tools.el")
 
+(add-to-list 'auto-mode-alist '("\\.erl?$" . erlang-mode))
+(add-to-list 'auto-mode-alist '("\\.hrl?$" . erlang-mode))
+
 (setq-default indent-tabs-mode nil)
 (setq completion-ignored-extensions 
       (append '(".ali" ".exe" ".bean") completion-ignored-extensions))
