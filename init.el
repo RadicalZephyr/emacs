@@ -23,7 +23,8 @@
 
 (defvar emacs-root 
   (cond ((file-accessible-directory-p "/home/shannog/") "/home/shannog/")
-        ((file-accessible-directory-p "/Users/geoff/") "/Users/geoff/") 
+        ((file-accessible-directory-p "c:/cygwin/home/geoff/") "c:/cygwin/home/geoff/")
+        ((file-accessible-directory-p "/Users/geoff/") "/Users/geoff/")
         (t "/home/geoff/")) "My home directory.")
 
 (labels ((add-path (p)
@@ -33,12 +34,6 @@
   (add-path ".emacs.d/macros/")
   (add-path ".emacs.d/lisp/")
   (add-path ".emacs.d/color-theme/"))
-
-(require 'midnight)
-(require 'package)
-(require 'erlang)
-(require 'flymake-cursor)
-(require 'face-list)
 
 (load-file "~/.emacs.d/macros/tools.macs")
 (load-file "~/.emacs.d/lisp/keys.el")
@@ -55,6 +50,7 @@
       (append '(".ali" ".exe" ".bean") completion-ignored-extensions))
 
 ;; Daemon/server setup
+(require 'midnight)
 (midnight-delay-set 'midnight-delay "6:30am")
 
 ;; Visual Modifications
@@ -69,6 +65,8 @@
 (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
 (if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
 
+(setq visible-bell t)
+
 (if window-system
     (color-theme-ez-dark)
   (color-theme-ez-dark-nw))
@@ -82,3 +80,8 @@
                                              (if (ignore-errors (next-error)) t
                                                (flymake-goto-next-error))))
              (flymake-mode t)))
+
+(require 'package)
+(require 'erlang)
+(require 'flymake-cursor)
+;; (require 'face-list)
