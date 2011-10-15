@@ -3,6 +3,7 @@
 (global-set-key "\C-x\C-o" 'other-window)
 
 (global-set-key "\C-cw" 'what-face)
+(global-set-key "\C-c\C-u" 'unfill-paragraph)
 
 ;; Probably shouldn't be here, but what the hell
 (global-set-key "\C-c\C-l" 'edebug-defun)
@@ -21,10 +22,12 @@
 (global-set-key "\C-r" 'isearch-backward-regexp)
 (global-set-key "\C-s" 'isearch-forward-regexp)
 
-(global-set-key "\C-\M-r" 'isearch-backward-regexp)
-(global-set-key "\C-\M-s" 'isearch-forward-regexp)
+(global-set-key "\C-\M-r" 'isearch-backward)
+(global-set-key "\C-\M-s" 'isearch-forward)
 
 ;; Swap line upwards
 (global-set-key "\C-xt" (lambda ()
                            (interactive)
                            (transpose-lines -1)))
+
+(global-set-key "\C-c/" 'comment-or-uncomment-region)

@@ -49,6 +49,9 @@
 (setq completion-ignored-extensions 
       (append '(".ali" ".exe" ".bean") completion-ignored-extensions))
 
+;; Make system copy interact with emacs kill ring
+(setq x-select-enable-clipboard t)
+
 ;; Daemon/server setup
 (require 'midnight)
 (midnight-delay-set 'midnight-delay "6:30am")
@@ -71,17 +74,47 @@
     (color-theme-ez-dark)
   (color-theme-ez-dark-nw))
 
-(add-hook 'c-mode-hook
-          '(lambda ()
-             (subword-mode 1)
-             (local-set-key (kbd "C-c C-x C-c") 'compile)
-             (local-set-key (kbd "C-x `") '(lambda ()
-                                             (interactive)
-                                             (if (ignore-errors (next-error)) t
-                                               (flymake-goto-next-error))))
-             (flymake-mode t)))
+(require 'package)
+(package-initialize)
+
+(add-to-list 'package-archives
+             '("marmalade" . 
+               "http://marmalade-repo.org/packages/"))
+
+(defun flymake-next-error ()
+  (interactive)
+  (if (ignore-errors (next-error)) t
+    (flymake-goto-next-error)))
+
+(defun init-c-mode ()
+  (progn 
+    (if (boundp 'subword-mode)
+        (subword-mode 1))
+    (local-set-key (kbd "C-c C-x C-c") 'compile)
+    (local-set-key (kbd "C-x `") 'flymake-next-error)
+    (flymake-mode t)))
+
+(add-hook 'c-mode-hook 'init-c-mode)
+                      
 
 (require 'package)
 (require 'erlang)
 (require 'flymake-cursor)
-;; (require 'face-list)
+(require 'face-list)
+
+
+;;; This was installed by package-install.el.
+;;; This provides support for the package system and
+;;; interfacing with ELPA, the package archive.
+;;; Move this code earlier if you want to reference
+;;; packages in your .emacs.
+(when
+    (load
+     (expand-file-name "~/.emacs.d/elpa/package.el"))
+  (package-initialize))
+
+(load "slime.el")
+
+(slime-setup '(slime-repl))
+
+(setq inferior-lisp-program "sbcl")
