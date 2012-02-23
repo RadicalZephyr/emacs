@@ -1,0 +1,18 @@
+((("template-derivation-alist" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0])
+  ("template-derivation" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("cons" .
+   [1 0 0 0])
+  ("emacs-root" .
+   [0 0 0 0 0 0 0 1 0 0])
+  ("concat" .
+   [1 0 0 0 0 0])
+  ("setq" .
+   [1 0 0 0])
+  ("appropriately" .
+   [0 1 0 0 0 0 0 0 0 0 0 0 0])
+  ("import" .
+   [0 0 1 0 0 0])
+  ("template-default-directories" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])))

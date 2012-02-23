@@ -34,7 +34,9 @@
   (add-path ".emacs.d/elpa/")
   (add-path ".emacs.d/macros/")
   (add-path ".emacs.d/lisp/")
-  (add-path ".emacs.d/color-theme/"))
+  (add-path ".emacs.d/color-theme/")
+  (add-path ".emacs.d/auto-complete")
+  (add-path ".emacs.d/python-mode.el-6.0.4/"))
 
 (load-file "~/.emacs.d/macros/tools.macs")
 (load-file "~/.emacs.d/lisp/keys.el")
@@ -47,8 +49,23 @@
 (add-to-list 'auto-mode-alist '("\\.hrl?$" . erlang-mode))
 
 (setq-default indent-tabs-mode nil)
+
+;; Setup template mode
+(require 'template)
+(template-initialize)
+(setq template-default-directories (cons (concat emacs-root ".emacs.d/templates/") template-default-directories))
+
+;; Setup python-mode
+(setq py-install-directory (concat emacs-root ".emacs.d/python-mode.el-6.0.4/"))
+(require 'python-mode)
+
+;; Setup auto-complete
+(require 'auto-complete-config)
+(add-to-list 'ac-dictionary-directories (concat emacs-root ".emacs.d/auto-complete/ac-dict"))
+(ac-config-default)
+
 (setq completion-ignored-extensions 
-      (append '(".ali" ".exe" ".bean") completion-ignored-extensions))
+      (append '(".ali" ".exe" ".beam") completion-ignored-extensions))
 
 ;; Make system copy interact with emacs kill ring
 (setq x-select-enable-clipboard t)
@@ -75,13 +92,6 @@
     (color-theme-ez-dark)
   (color-theme-ez-dark-nw))
 
-(require 'package)
-(package-initialize)
-
-(add-to-list 'package-archives
-             '("marmalade" . 
-               "http://marmalade-repo.org/packages/"))
-
 (defun flymake-next-error ()
   (interactive)
   (if (ignore-errors (next-error)) t
@@ -103,7 +113,6 @@
 (require 'flymake-cursor)
 (require 'face-list)
 
-
 ;;; This was installed by package-install.el.
 ;;; This provides support for the package system and
 ;;; interfacing with ELPA, the package archive.
@@ -113,6 +122,10 @@
     (load
      (expand-file-name "~/.emacs.d/elpa/package.el"))
   (package-initialize))
+
+(add-to-list 'package-archives
+             '("marmalade" . 
+               "http://marmalade-repo.org/packages/"))
 
 (load "slime.el")
 
