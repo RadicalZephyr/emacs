@@ -22,21 +22,31 @@
 
 (require 'cl)
 
-(defvar emacs-root 
+(defvar emacs-root
   (cond ((file-accessible-directory-p "/home/shannog/") "/home/shannog/")
         ((file-accessible-directory-p "c:/cygwin/home/geoff/") "c:/cygwin/home/geoff/")
         ((file-accessible-directory-p "/Users/geoff/") "/Users/geoff/")
         (t "/home/geoff/")) "My home directory.")
 
-(labels ((add-path (p)
-		   (add-to-list 'load-path
-				(concat emacs-root p))))
-  (add-path ".emacs.d/elpa/")
-  (add-path ".emacs.d/macros/")
-  (add-path ".emacs.d/lisp/")
-  (add-path ".emacs.d/color-theme/")
-  (add-path ".emacs.d/auto-complete")
-  (add-path ".emacs.d/python-mode.el-6.0.4/"))
+(labels ((add-path-list (list-to-add)
+                        (cond ((null list-to-add) t)
+                              (t (add-to-list 'load-path
+					      (concat emacs-root (car list-to-add)))
+				 (add-path-list (cdr list-to-add)))))
+         (add-auto-mode-list (list-to-add)
+                             (cond ((null list-to-add) t) 
+                                   (t (add-to-list 'auto-mode-alist
+						   (car list-to-add))
+				      (add-auto-mode-list (cdr list-to-add))))))
+  (add-path-list '(".emacs.d/elpa/"
+                   ".emacs.d/macros/"
+                   ".emacs.d/lisp/"
+                   ".emacs.d/color-theme/"
+                   ".emacs.d/auto-complete"
+                   ".emacs.d/python-mode.el-6.0.4/"))
+  (add-auto-mode-list '(("\\.erl?$" . erlang-mode)
+                        ("\\.hrl?$" . erlang-mode)
+                        ("\\.php?$" . php-mode))))
 
 (load-file "~/.emacs.d/macros/tools.macs")
 (load-file "~/.emacs.d/lisp/keys.el")
@@ -44,9 +54,6 @@
 (load-file "~/.emacs.d/lisp/ez-dark.el")
 (load-file "~/.emacs.d/lisp/ez-dark-nw.el")
 (load-file "~/.emacs.d/lisp/latex-tools.el")
-
-(add-to-list 'auto-mode-alist '("\\.erl?$" . erlang-mode))
-(add-to-list 'auto-mode-alist '("\\.hrl?$" . erlang-mode))
 
 (setq-default indent-tabs-mode nil)
 
@@ -64,7 +71,7 @@
 (add-to-list 'ac-dictionary-directories (concat emacs-root ".emacs.d/auto-complete/ac-dict"))
 (ac-config-default)
 
-(setq completion-ignored-extensions 
+(setq completion-ignored-extensions
       (append '(".ali" ".exe" ".beam") completion-ignored-extensions))
 
 ;; Make system copy interact with emacs kill ring
@@ -98,7 +105,7 @@
     (flymake-goto-next-error)))
 
 (defun init-c-mode ()
-  (progn 
+  (progn
     (if (boundp 'subword-mode)
         (subword-mode 1))
     (local-set-key (kbd "C-c C-x C-c") 'compile)
@@ -106,7 +113,7 @@
     (flymake-mode t)))
 
 (add-hook 'c-mode-hook 'init-c-mode)
-                      
+
 
 (require 'package)
 (require 'erlang)
@@ -124,7 +131,7 @@
   (package-initialize))
 
 (add-to-list 'package-archives
-             '("marmalade" . 
+             '("marmalade" .
                "http://marmalade-repo.org/packages/"))
 
 (load "slime.el")
