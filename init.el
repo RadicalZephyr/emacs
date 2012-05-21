@@ -77,12 +77,17 @@
 ;; Make system copy interact with emacs kill ring
 (setq x-select-enable-clipboard t)
 
+(when (eq system-type 'darwin)
+  (setq mac-command-modifier 'meta)
+  (setq special-display-regexps (remove "[ ]?\\*[hH]elp.*" special-display-regexps)))
+
 ;; Daemon/server setup
 (require 'midnight)
 (midnight-delay-set 'midnight-delay "6:30am")
 
 ;; Visual Modifications
 
+(setq x-stretch-cursor t)
 (set-face-attribute 'default nil :height 150)
 
 (column-number-mode)
@@ -119,6 +124,7 @@
 (require 'erlang)
 (require 'flymake-cursor)
 (require 'face-list)
+(require 'flymake-ecj)
 
 ;;; This was installed by package-install.el.
 ;;; This provides support for the package system and
@@ -127,7 +133,7 @@
 ;;; packages in your .emacs.
 (when
     (load
-     (expand-file-name "~/.emacs.d/elpa/package.el"))
+     (concat emacs-root ".emacs.d/elpa/package.el"))
   (package-initialize))
 
 (add-to-list 'package-archives
@@ -138,6 +144,8 @@
 
 (slime-setup '(slime-repl))
 
-(setq inferior-lisp-program "sbcl")
-
-(ansi-color-for-comint-mode-on)
+(when 
+    (load "slime.el")
+  (slime-setup '(slime-repl))
+  (setq inferior-lisp-program "sbcl")
+  (ansi-color-for-comint-mode-on))
