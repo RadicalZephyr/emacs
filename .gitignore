@@ -1,4 +1,5 @@
 *~
 server
 /auto-save-list
-session.*
+session.*ac-comphist.dat
+elpa/archives/gnu elpa/archives/marmalade
