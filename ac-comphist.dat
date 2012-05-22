@@ -1,40 +1,50 @@
-((("template-derivation-alist" .
-   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0])
-  ("template-derivation" .
-   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
-  ("cons" .
+((("json-read-from-string" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0])
+  ("json" .
    [1 0 0 0])
-  ("emacs-root" .
-   [0 0 0 0 0 0 0 1 0 0])
-  ("concat" .
-   [1 0 0 0 0 0])
-  ("setq" .
+  ("enddate" .
+   [1 0 0 0 0 0 0])
+  ("$date_cond" .
+   [1 0 0 0 0 0 1 0 0 0])
+  ("FALSE" .
+   [3 0 0 0 0])
+  ("else" .
    [1 0 0 0])
-  ("appropriately" .
-   [0 1 0 0 0 0 0 0 0 0 0 0 0])
-  ("import" .
-   [0 0 1 0 0 0])
+  ("$impressions" .
+   [1 0 0 0 0 0 0 0 0 0 0 0])
+  ("if" .
+   [1 0])
+  ("$enddate" .
+   [1 0 0 0 0 0 0 0])
+  ("nil" .
+   [1 0 0])
+  ("require" .
+   [4 0 0 0 0 0 0])
   ("template-default-directories" .
    [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
-  ("list" .
+  ("import" .
+   [0 0 1 0 0 0])
+  ("appropriately" .
+   [0 1 0 0 0 0 0 0 0 0 0 0 0])
+  ("setq" .
    [2 0 0 0])
-  ("t" .
-   [1])
-  ("car" .
-   [3 0 0])
-  ("list-to-add" .
-   [2 0 0 0 0 0 0 4 1 0 1])
-  ("add-path-list" .
-   [1 0 0 0 0 0 0 0 0 0 0 1 0])
-  ("cdr" .
-   [2 0 0])
-  ("cond" .
-   [2 0 0 0])
-  ("null" .
-   [2 0 0 0])
-  ("add-auto-mode-list" .
-   [0 0 0 0 0 0 0 2 0 0 0 0 0 0 0 0 0 0])
-  ("add-to-list" .
-   [0 0 0 0 0 0 0 0 0 0 1])
-  ("auto-mode-alist" .
-   [0 0 0 0 0 0 1 0 0 0 0 0 0 0 0])))
+  ("concat" .
+   [1 0 0 0 0 0])
+  ("emacs-root" .
+   [0 0 0 0 0 0 0 1 0 0])
+  ("cons" .
+   [1 0 0 0])
+  ("template-derivation" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("template-derivation-alist" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0])
+  ("$this" .
+   [4 0 0 0 0])
+  ("load" .
+   [1 0 0 0])
+  ("helper" .
+   [1 0 0 0 0 0])
+  ("defvar" .
+   [1 0 0 0 0 0])
+  ("cedet" .
+   [1 0 0 0 0])))

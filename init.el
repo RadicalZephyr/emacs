@@ -43,7 +43,10 @@
                    ".emacs.d/lisp/"
                    ".emacs.d/color-theme/"
                    ".emacs.d/auto-complete"
-                   ".emacs.d/python-mode.el-6.0.4/"))
+                   ".emacs.d/python-mode.el-6.0.4/"
+                   ".emacs.d/cedet-1.1/common/"
+                   ".emacs.d/ecb-2.40/"
+                   ".emacs.d/jdee-2.4.0.1/lisp"))
   (add-auto-mode-list '(("\\.erl?$" . erlang-mode)
                         ("\\.hrl?$" . erlang-mode)
                         ("\\.php?$" . php-mode))))
@@ -56,6 +59,11 @@
 (load-file "~/.emacs.d/lisp/latex-tools.el")
 
 (setq-default indent-tabs-mode nil)
+
+;; Mac specific changes
+(when (eq system-type 'darwin)
+  (setq mac-command-modifier 'meta)
+  (setq special-display-regexps (remove "[ ]?\\*[hH]elp.*" special-display-regexps)))
 
 ;; Setup template mode
 (require 'template)
@@ -74,12 +82,20 @@
 (setq completion-ignored-extensions
       (append '(".ali" ".exe" ".beam") completion-ignored-extensions))
 
+;; CEDET initializations
+(require 'cedet)
+(global-ede-mode 1)
+(semantic-load-enable-code-helpers)
+(global-srecode-minor-mode 1)
+
+;; JDEE initializations
+(require 'jde)
+
+;; Setup ecb-autoloads
+(require 'ecb-autoloads)
+
 ;; Make system copy interact with emacs kill ring
 (setq x-select-enable-clipboard t)
-
-(when (eq system-type 'darwin)
-  (setq mac-command-modifier 'meta)
-  (setq special-display-regexps (remove "[ ]?\\*[hH]elp.*" special-display-regexps)))
 
 ;; Daemon/server setup
 (require 'midnight)
