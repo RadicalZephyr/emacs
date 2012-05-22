@@ -4,3 +4,4 @@ server
 session.*
 ac-comphist.dat
 elpa/archives/*
+url/*
