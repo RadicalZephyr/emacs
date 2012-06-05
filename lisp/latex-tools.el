@@ -23,3 +23,4 @@
                              (local-set-key 
                               "\C-c\C-m" 
                               'latex-insert-matrix)))
+(provide 'ezephyr-latex-tools)

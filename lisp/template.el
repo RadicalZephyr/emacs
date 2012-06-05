@@ -2317,7 +2317,6 @@ format of MENU."
 	    (memq 'keys template-initialize))
     (condition-case nil			; older Emacses don't understand all
 	(progn
-	  (define-key ctl-x-map "t" 'template-new-file)
 	  (define-key ctl-x-map [(control =)] 'template-single-comment)
 	  (define-key ctl-x-map [(control ?\;)] 'template-block-comment))
       (error nil)))

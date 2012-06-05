@@ -163,3 +163,5 @@ vi style of % jumping to matching brace."
       (progn
         (goto-char (point-max))
         (insert "\n" template " {\n\n  return 0;\n}")))))
+
+(provide 'ezephyr-lisp-tools)

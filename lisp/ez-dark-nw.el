@@ -34,3 +34,4 @@
        (show-paren-match-face ((t (:bold t :foreground "blue" 
                                     :background "white")))))))
 ;; (color-theme-ez-dark-nw)
+(provide 'ezephyr-dark-theme-nw)

@@ -35,4 +35,4 @@
        (region ((t (:foreground nil :background "#555555"))))
        (show-paren-match-face ((t (:bold t :foreground "#ffffff" 
                                     :background "#050505")))))))
-(color-theme-ez-dark)
+(provide 'ezephyr-dark-theme)

@@ -8,6 +8,7 @@
  '(default-input-method "latin-1-prefix")
  '(global-font-lock-mode t nil (font-lock))
  '(inhibit-startup-screen t)
+ '(iswitchb-mode t)
  '(safe-local-variable-values (quote ((Syntax . ANSI-Common-Lisp) (Base . 10))))
  '(save-place t nil (saveplace))
  '(show-paren-mode t nil (paren))
@@ -39,7 +40,6 @@
 						   (car list-to-add))
 				      (add-auto-mode-list (cdr list-to-add))))))
   (add-path-list '(".emacs.d/elpa/"
-                   ".emacs.d/macros/"
                    ".emacs.d/lisp/"
                    ".emacs.d/color-theme/"
                    ".emacs.d/auto-complete"
@@ -50,13 +50,14 @@
   (add-auto-mode-list '(("\\.erl?$" . erlang-mode)
                         ("\\.hrl?$" . erlang-mode)
                         ("\\.php?$" . php-mode))))
+(require 'ezephyr-keys "keys.el")
+(require 'ezephyr-lisp-tools "tools.el")
+(require 'ezephyr-latex-tools "latex-tools.el")
+
+(require 'ezephyr-dark-theme "ez-dark.el")
+(require 'ezephyr-dark-theme-nw "ez-dark-nw.el")
 
 (load-file "~/.emacs.d/macros/tools.macs")
-(load-file "~/.emacs.d/lisp/keys.el")
-(load-file "~/.emacs.d/lisp/tools.el")
-(load-file "~/.emacs.d/lisp/ez-dark.el")
-(load-file "~/.emacs.d/lisp/ez-dark-nw.el")
-(load-file "~/.emacs.d/lisp/latex-tools.el")
 
 (setq-default indent-tabs-mode nil)
 
@@ -82,17 +83,17 @@
 (setq completion-ignored-extensions
       (append '(".ali" ".exe" ".beam") completion-ignored-extensions))
 
-;; CEDET initializations
-(require 'cedet)
-(global-ede-mode 1)
-(semantic-load-enable-code-helpers)
-(global-srecode-minor-mode 1)
+;; ;; CEDET initializations
+;; (require 'cedet)
+;; (global-ede-mode 1)
+;; (semantic-load-enable-code-helpers)
+;; (global-srecode-minor-mode 1)
 
-;; JDEE initializations
-(require 'jde)
+;; ;; JDEE initializations
+;; (require 'jde)
 
-;; Setup ecb-autoloads
-(require 'ecb-autoloads)
+;; ;; Setup ecb-autoloads
+;; (require 'ecb-autoloads)
 
 ;; Make system copy interact with emacs kill ring
 (setq x-select-enable-clipboard t)
@@ -129,7 +130,6 @@
   (progn
     (if (boundp 'subword-mode)
         (subword-mode 1))
-    (local-set-key (kbd "C-c C-x C-c") 'compile)
     (local-set-key (kbd "C-x `") 'flymake-next-error)
     (flymake-mode t)))
 
@@ -165,3 +165,10 @@
   (slime-setup '(slime-repl))
   (setq inferior-lisp-program "sbcl")
   (ansi-color-for-comint-mode-on))
+
+(put 'narrow-to-region 'disabled nil)
+
+(ansi-color-for-comint-mode-on)
+
+(setq default-tab-width 2)
+

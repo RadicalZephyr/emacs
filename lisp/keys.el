@@ -14,7 +14,8 @@
 
 (global-set-key "\M-n" 'goto-line)
 
-(global-set-key "\C-c\C-c" 'comment-or-uncomment-region)
+(global-set-key "\C-z" 'compile)
+(global-set-key "\C-c/" 'comment-or-uncomment-region)
 
 (global-set-key [f12] 'man)
 
@@ -30,4 +31,16 @@
                            (interactive)
                            (transpose-lines -1)))
 
+(global-set-key "\C-z" 'compile)
+
+(provide 'ezephyr-keys)
+
 (global-set-key "\C-c/" 'comment-or-uncomment-region)
+
+(global-set-key (kbd "<C-up>") (lambda () 
+                                 (interactive)
+                                 (scroll-down 1)))
+
+(global-set-key (kbd "<C-down>") (lambda () 
+                                 (interactive)
+                                 (scroll-up 1)))

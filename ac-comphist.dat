@@ -1,4 +1,10 @@
-((("json-read-from-string" .
+((("compile" .
+   [1 0 0 0 0 0 0])
+  ("global-set-key" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("iswitchb-mode" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 1])
+  ("json-read-from-string" .
    [0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0])
   ("json" .
    [1 0 0 0])
@@ -27,7 +33,7 @@
   ("appropriately" .
    [0 1 0 0 0 0 0 0 0 0 0 0 0])
   ("setq" .
-   [2 0 0 0])
+   [3 0 0 0])
   ("concat" .
    [1 0 0 0 0 0])
   ("emacs-root" .
