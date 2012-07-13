@@ -83,18 +83,6 @@
 (setq completion-ignored-extensions
       (append '(".ali" ".exe" ".beam") completion-ignored-extensions))
 
-;; CEDET initializations
-;; (require 'cedet)
-;; (global-ede-mode 1)
-;; (semantic-load-enable-code-helpers)
-;; (global-srecode-minor-mode 1)
-
-;; ;; JDEE initializations
-;; (require 'jde)
-
-;; ;; Setup ecb-autoloads
-;; (require 'ecb-autoloads)
-
 ;; Make system copy interact with emacs kill ring
 (setq x-select-enable-clipboard t)
 
