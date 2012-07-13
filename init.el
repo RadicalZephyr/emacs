@@ -83,7 +83,7 @@
 (setq completion-ignored-extensions
       (append '(".ali" ".exe" ".beam") completion-ignored-extensions))
 
-;; ;; CEDET initializations
+;; CEDET initializations
 ;; (require 'cedet)
 ;; (global-ede-mode 1)
 ;; (semantic-load-enable-code-helpers)
@@ -99,10 +99,14 @@
 (setq x-select-enable-clipboard t)
 
 ;; Daemon/server setup
+(server-start)
+(desktop-save-mode 1)
 (require 'midnight)
 (midnight-delay-set 'midnight-delay "6:30am")
 
 ;; Visual Modifications
+
+(setq default-tab-width 4)
 
 (setq x-stretch-cursor t)
 (set-face-attribute 'default nil :height 150)
@@ -171,4 +175,3 @@
 (ansi-color-for-comint-mode-on)
 
 (setq default-tab-width 2)
-
