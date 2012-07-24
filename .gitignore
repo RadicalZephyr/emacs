@@ -5,3 +5,4 @@ session.*
 ac-comphist.dat
 elpa/archives/*
 url/*
+.emacs.desktop*
