@@ -1,11 +1,12 @@
 (custom-set-variables
-  ;; custom-set-variables was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
  '(case-fold-search t)
  '(current-language-environment "Latin-1")
  '(default-input-method "latin-1-prefix")
+ '(ecb-options-version "2.40")
  '(global-font-lock-mode t nil (font-lock))
  '(inhibit-startup-screen t)
  '(iswitchb-mode t)
@@ -15,10 +16,10 @@
  '(text-mode-hook (quote (turn-on-auto-fill text-mode-hook-identify)))
  '(transient-mark-mode (quote identity)))
 (custom-set-faces
-  ;; custom-set-faces was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
  )
 
 (require 'cl)
