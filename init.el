@@ -24,10 +24,10 @@
 (require 'cl)
 
 (defvar emacs-root
-  (cond ((file-accessible-directory-p "/home/shannog/") "/home/shannog/")
-        ((file-accessible-directory-p "c:/cygwin/home/geoff/") "c:/cygwin/home/geoff/")
-        ((file-accessible-directory-p "/Users/geoff/") "/Users/geoff/")
-        (t "/home/geoff/")) "My home directory.")
+  (cond ((file-accessible-directory-p "/home/shannog/.emacs.d/") "/home/shannog/.emacs.d/")
+        ((file-accessible-directory-p "c:/cygwin/home/geoff/.emacs.d/") "c:/cygwin/home/geoff/.emacs.d/")
+        ((file-accessible-directory-p "/Users/geoff/.emacs.d/") "/Users/geoff/.emacs.d/")
+        (t "/home/geoff/.emacs.d/")) "My home directory.")
 
 (labels ((add-path-list (list-to-add)
                         (cond ((null list-to-add) t)
@@ -39,14 +39,14 @@
                                    (t (add-to-list 'auto-mode-alist
 						   (car list-to-add))
 				      (add-auto-mode-list (cdr list-to-add))))))
-  (add-path-list '(".emacs.d/elpa/"
-                   ".emacs.d/lisp/"
-                   ".emacs.d/color-theme/"
-                   ".emacs.d/auto-complete"
-                   ".emacs.d/python-mode.el-6.0.4/"
-                   ".emacs.d/cedet-1.1/common/"
-                   ".emacs.d/ecb-2.40/"
-                   ".emacs.d/jdee-2.4.0.1/lisp"))
+  (add-path-list '("elpa/"
+                   "lisp/"
+                   "color-theme/"
+                   "auto-complete/"
+                   "python-mode.el-6.0.4/"
+                   "ecb-2.4.1/"
+                   "jdee-2.4.0.1/lisp/"
+                   "jdibug/"))
   (add-auto-mode-list '(("\\.erl?$" . erlang-mode)
                         ("\\.hrl?$" . erlang-mode)
                         ("\\.php?$" . php-mode))))
@@ -57,7 +57,7 @@
 (require 'ezephyr-dark-theme "ez-dark.el")
 (require 'ezephyr-dark-theme-nw "ez-dark-nw.el")
 
-(load-file "~/.emacs.d/macros/tools.macs")
+(load-file (concat emacs-root "macros/tools.macs"))
 
 (setq-default indent-tabs-mode nil)
 
@@ -66,18 +66,32 @@
   (setq mac-command-modifier 'meta)
   (setq special-display-regexps (remove "[ ]?\\*[hH]elp.*" special-display-regexps)))
 
+;; CEDET
+(load-file (concat emacs-root "cedet-1.1/common/cedet.el"))
+
+;; JDEE
+(require 'jde)
+(defun screen-width nil -1)
+(define-obsolete-function-alias 'make-local-hook 'ignore "21.1")
+
+;; JDIBUG
+(require 'jdibug)
+
+;; ECB
+(require 'ecb)
+
 ;; Setup template mode
 (require 'template)
 (template-initialize)
-(setq template-default-directories (cons (concat emacs-root ".emacs.d/templates/") template-default-directories))
+(setq template-default-directories (cons (concat emacs-root "templates/") template-default-directories))
 
 ;; Setup python-mode
-(setq py-install-directory (concat emacs-root ".emacs.d/python-mode.el-6.0.4/"))
+(setq py-install-directory (concat emacs-root "python-mode.el-6.0.4/"))
 (require 'python-mode)
 
 ;; Setup auto-complete
 (require 'auto-complete-config)
-(add-to-list 'ac-dictionary-directories (concat emacs-root ".emacs.d/auto-complete/ac-dict"))
+(add-to-list 'ac-dictionary-directories (concat emacs-root "auto-complete/ac-dict"))
 (ac-config-default)
 
 (setq completion-ignored-extensions
@@ -141,7 +155,7 @@
 ;;; packages in your .emacs.
 (when
     (load
-     (concat emacs-root ".emacs.d/elpa/package.el"))
+     (concat emacs-root "elpa/package.el"))
   (package-initialize))
 
 (add-to-list 'package-archives
