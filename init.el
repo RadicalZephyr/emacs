@@ -105,9 +105,9 @@
 
 ;; Daemon/server setup
 (server-start)
-(desktop-save-mode 1)
-(require 'midnight)
-(midnight-delay-set 'midnight-delay "6:30am")
+;; (desktop-save-mode 1)
+;; (require 'midnight)
+;; (midnight-delay-set 'midnight-delay "6:30am")
 
 ;; Visual Modifications
 
@@ -165,15 +165,15 @@
              '("marmalade" .
                "http://marmalade-repo.org/packages/"))
 
-(load "slime.el")
+;; (load "slime.el")
 
-(slime-setup '(slime-repl))
+;; (slime-setup '(slime-repl))
 
-(when 
-    (load "slime.el")
-  (slime-setup '(slime-repl))
-  (setq inferior-lisp-program "sbcl")
-  (ansi-color-for-comint-mode-on))
+;; (when 
+;;     (load "slime.el")
+;;   (slime-setup '(slime-repl))
+;;   (setq inferior-lisp-program "sbcl")
+;;   (ansi-color-for-comint-mode-on))
 
 (put 'narrow-to-region 'disabled nil)
 
