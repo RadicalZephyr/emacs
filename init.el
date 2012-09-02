@@ -70,7 +70,7 @@
   (setq special-display-regexps (remove "[ ]?\\*[hH]elp.*" special-display-regexps)))
 
 ;; CEDET
-(load-file (concat emacs-root "cedet-1.1/common/cedet.el"))
+;;(load-file (concat emacs-root "cedet-1.1/common/cedet.el"))
 
 ;; JDEE
 ;; (require 'jde)
@@ -81,7 +81,7 @@
 ;;(require 'jdibug)
 
 ;; ECB
-(require 'ecb)
+;;(require 'ecb)
 
 ;; Setup template mode
 (require 'template)
