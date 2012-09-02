@@ -51,6 +51,8 @@
   (add-auto-mode-list '(("\\.erl?$" . erlang-mode)
                         ("\\.hrl?$" . erlang-mode)
                         ("\\.php?$" . php-mode))))
+
+;;(require 'ezephyr-indentation "indentation.el")
 (require 'ezephyr-keys "keys.el")
 (require 'ezephyr-lisp-tools "tools.el")
 (require 'ezephyr-latex-tools "latex-tools.el")
@@ -71,12 +73,12 @@
 (load-file (concat emacs-root "cedet-1.1/common/cedet.el"))
 
 ;; JDEE
-(require 'jde)
-(defun screen-width nil -1)
-(define-obsolete-function-alias 'make-local-hook 'ignore "21.1")
+;; (require 'jde)
+;; (defun screen-width nil -1)
+;; (define-obsolete-function-alias 'make-local-hook 'ignore "21.1")
 
 ;; JDIBUG
-(require 'jdibug)
+;;(require 'jdibug)
 
 ;; ECB
 (require 'ecb)
