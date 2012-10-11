@@ -130,26 +130,32 @@
     (color-theme-ez-dark)
   (color-theme-ez-dark-nw))
 
+(require 'cc-mode)
+
 (defun flymake-next-error ()
   (interactive)
   (if (ignore-errors (next-error)) t
     (flymake-goto-next-error)))
 
-(defun init-c-mode ()
-  (progn
-    (if (boundp 'subword-mode)
-        (subword-mode 1))
-    (local-set-key (kbd "C-x `") 'flymake-next-error)
-    (flymake-mode t)))
+(define-key c-mode-base-map (kbd "RET") 'newline-and-indent)
+(define-key c-mode-base-map (kbd "C-x `") 'flymake-next-error)
 
-(add-hook 'c-mode-hook 'init-c-mode)
+;; flymake setups
+(when (not (boundp 'flymake-buildfile-dirs))
+  (setq flymake-buildfile-dirs '()))
 
+(setq flymake-buildfile-dirs
+ (append '("build") flymake-buildfile-dirs))
 
+(require 'autopair)
 (require 'package)
 (require 'erlang)
 (require 'flymake-cursor)
 (require 'face-list)
 (require 'flymake-ecj)
+
+(require 'ws-trim)
+(set-default 'ws-trim-level 3)
 
 ;;; This was installed by package-install.el.
 ;;; This provides support for the package system and
