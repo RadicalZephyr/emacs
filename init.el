@@ -33,13 +33,13 @@
 (labels ((add-path-list (list-to-add)
                         (cond ((null list-to-add) t)
                               (t (add-to-list 'load-path
-					      (concat emacs-root (car list-to-add)))
-				 (add-path-list (cdr list-to-add)))))
+                          (concat emacs-root (car list-to-add)))
+                 (add-path-list (cdr list-to-add)))))
          (add-auto-mode-list (list-to-add)
-                             (cond ((null list-to-add) t) 
+                             (cond ((null list-to-add) t)
                                    (t (add-to-list 'auto-mode-alist
-						   (car list-to-add))
-				      (add-auto-mode-list (cdr list-to-add))))))
+                           (car list-to-add))
+                      (add-auto-mode-list (cdr list-to-add))))))
   (add-path-list '("elpa/"
                    "lisp/"
                    "color-theme/"
@@ -156,6 +156,7 @@
 
 (require 'ws-trim)
 (set-default 'ws-trim-level 3)
+(global-ws-trim-mode t)
 
 ;;; This was installed by package-install.el.
 ;;; This provides support for the package system and
@@ -175,7 +176,7 @@
 
 ;; (slime-setup '(slime-repl))
 
-;; (when 
+;; (when
 ;;     (load "slime.el")
 ;;   (slime-setup '(slime-repl))
 ;;   (setq inferior-lisp-program "sbcl")
