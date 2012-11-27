@@ -6,4 +6,7 @@
   <uri pattern="build.xml"
        uri="file:///home/torstein/library/xml/ant-1.6.rnc"
        />
+  <namespace ns="http://jakarta.apache.org/log4j/" typeId="log4j"/>
+
+  <typeId id="log4j" uri="log4j.rnc"/>
 </locatingRules>
