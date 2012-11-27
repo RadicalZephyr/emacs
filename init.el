@@ -71,13 +71,14 @@
 
 (setq my-el-get-packages
       (append
-       '(paredit ws-trim
+       '(paredit ;ws-trim
          autopair magit
-         slime slime-repl
+         slime ;slime-repl
          smart-tab clojure-mode
-         clojure-test-mode clojurescript-mode
+         ;clojure-test-mode clojurescript-mode
          php-mode php-completion
-         flymake-php)
+         ;flymake-php
+	 )
        (mapcar 'el-get-source-name el-get-sources)))
 
 (el-get 'sync my-el-get-packages)
