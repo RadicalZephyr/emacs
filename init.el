@@ -107,9 +107,9 @@
 
 ;; Daemon/server setup
 (server-start)
-;; (desktop-save-mode 1)
-;; (require 'midnight)
-;; (midnight-delay-set 'midnight-delay "6:30am")
+(desktop-save-mode 1)
+(require 'midnight)
+(midnight-delay-set 'midnight-delay "6:30am")
 
 ;; Visual Modifications
 
@@ -149,7 +149,7 @@
 (setq flymake-buildfile-dirs
  (append '("build") flymake-buildfile-dirs))
 
-(require 'autopair)
+(require 'autopair "autopair-0.3/autopair.el")
 (require 'erlang)
 (require 'flymake-cursor)
 (require 'face-list)
