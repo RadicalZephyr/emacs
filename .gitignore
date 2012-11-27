@@ -7,3 +7,4 @@ elpa/archives/*
 url/*
 .emacs.desktop*
 elpa/
+el-get/

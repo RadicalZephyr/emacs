@@ -43,6 +43,7 @@
                            (car list-to-add))
                       (add-auto-mode-list (cdr list-to-add))))))
   (add-path-list '("elpa/"
+                   "el-get/el-get"
                    "lisp/"
                    "color-theme/"
                    "auto-complete/"
@@ -61,6 +62,25 @@
 
 (require 'ezephyr-dark-theme "ez-dark.el")
 (require 'ezephyr-dark-theme-nw "ez-dark-nw.el")
+
+;; Bootstrap elpa and el-get, now we can call (el-get 'sync ...)
+(require 'elpa-bootstrap)
+
+(setq el-get-user-package-directory
+      (concat emacs-root "recipes/"))
+
+(setq my-el-get-packages
+      (append
+       '(paredit ws-trim
+         autopair magit
+         slime slime-repl
+         smart-tab clojure-mode
+         clojure-test-mode clojurescript-mode
+         php-mode php-completion
+         flymake-php)
+       (mapcar 'el-get-source-name el-get-sources)))
+
+(el-get 'sync my-el-get-packages)
 
 (load-file (concat emacs-root "macros/tools.macs"))
 
@@ -107,9 +127,9 @@
 
 ;; Daemon/server setup
 (server-start)
-;; (desktop-save-mode 1)
-;; (require 'midnight)
-;; (midnight-delay-set 'midnight-delay "6:30am")
+(desktop-save-mode 1)
+(require 'midnight)
+(midnight-delay-set 'midnight-delay "6:30am")
 
 ;; Visual Modifications
 
@@ -132,6 +152,9 @@
     (color-theme-ez-dark)
   (color-theme-ez-dark-nw))
 
+
+;; More functional mods
+
 (require 'cc-mode)
 
 (defun flymake-next-error ()
@@ -149,36 +172,13 @@
 (setq flymake-buildfile-dirs
  (append '("build") flymake-buildfile-dirs))
 
-(require 'autopair)
 (require 'erlang)
 (require 'flymake-cursor)
 (require 'face-list)
 (require 'flymake-ecj)
 
-(require 'ws-trim)
 (set-default 'ws-trim-level 3)
 (global-ws-trim-mode t)
-
-;; Package setup
-(when
-    (or (require 'package)
-        (load
-         (concat emacs-root "elpa/package.el")))
-  (add-to-list 'package-archives
-               '("marmalade" .
-                 "http://marmalade-repo.org/packages/"))
-  (add-to-list 'package-archives
-               '("melpa" . "http://melpa.milkbox.net/packages/") t)
-  (package-initialize))
-
-;; nREPL
-(when (not (package-installed-p 'nrepl))
-  (package-install 'nrepl))
-
-(add-hook 'nrepl-interaction-mode-hook
-  'nrepl-turn-on-eldoc-mode)
-(add-hook 'nrepl-mode-hook 'subword-mode)
-(add-hook 'nrepl-mode-hook 'paredit-mode)
 
 ;; (load "slime.el")
 
