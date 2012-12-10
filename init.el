@@ -148,7 +148,6 @@
  (append '("build") flymake-buildfile-dirs))
 
 (require 'autopair)
-(require 'package)
 (require 'erlang)
 (require 'flymake-cursor)
 (require 'face-list)
@@ -158,19 +157,26 @@
 (set-default 'ws-trim-level 3)
 (global-ws-trim-mode t)
 
-;;; This was installed by package-install.el.
-;;; This provides support for the package system and
-;;; interfacing with ELPA, the package archive.
-;;; Move this code earlier if you want to reference
-;;; packages in your .emacs.
+;; Package setup
 (when
-    (load
-     (concat emacs-root "elpa/package.el"))
+    (or (require 'package)
+        (load
+         (concat emacs-root "elpa/package.el")))
+  (add-to-list 'package-archives
+               '("marmalade" .
+                 "http://marmalade-repo.org/packages/"))
+  (add-to-list 'package-archives
+               '("melpa" . "http://melpa.milkbox.net/packages/") t)
   (package-initialize))
 
-(add-to-list 'package-archives
-             '("marmalade" .
-               "http://marmalade-repo.org/packages/"))
+;; nREPL
+(when (not (package-installed-p 'nrepl))
+  (package-install 'nrepl))
+
+(add-hook 'nrepl-interaction-mode-hook
+  'nrepl-turn-on-eldoc-mode)
+(add-hook 'nrepl-mode-hook 'subword-mode)
+(add-hook 'nrepl-mode-hook 'paredit-mode)
 
 ;; (load "slime.el")
 
