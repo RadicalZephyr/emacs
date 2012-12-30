@@ -3,6 +3,7 @@ server
 /auto-save-list
 session.*
 ac-comphist.dat
+elpa/
 elpa/archives/*
 url/*
 .emacs.desktop*
