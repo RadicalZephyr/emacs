@@ -172,8 +172,9 @@
   (package-initialize))
 
 ;; nREPL
-(when (not (package-installed-p 'nrepl))
-  (package-install 'nrepl))
+(dolist (pname '(nrepl slime-ritz nrepl-ritz))
+  (when (not (package-installed-p pname))
+    (package-install pname)))
 
 (add-hook 'nrepl-interaction-mode-hook
   'nrepl-turn-on-eldoc-mode)
