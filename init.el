@@ -169,6 +169,7 @@
   (add-to-list 'package-archives
                '("melpa" . "http://melpa.milkbox.net/packages/") t)
   (package-initialize))
+(package-refresh-contents)
 
 ;; Make sure extra packages are installed
 (dolist (pname '(autopair
@@ -182,7 +183,6 @@
                  nrepl
                  nrepl-ritz
                  paredit
-                 php-completion
                  php-mode
                  slime-ritz
                  smart-tab))
