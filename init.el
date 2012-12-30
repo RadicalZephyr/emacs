@@ -149,7 +149,6 @@
 (setq flymake-buildfile-dirs
  (append '("build") flymake-buildfile-dirs))
 
-(require 'autopair "autopair-0.3/autopair.el")
 (require 'erlang)
 (require 'flymake-cursor)
 (require 'face-list)
@@ -171,11 +170,16 @@
                '("melpa" . "http://melpa.milkbox.net/packages/") t)
   (package-initialize))
 
-;; nREPL
-(dolist (pname '(nrepl slime-ritz nrepl-ritz))
+;; Make sure extra packages are installed
+(dolist (pname '(autopair nrepl slime-ritz nrepl-ritz))
   (when (not (package-installed-p pname))
     (package-install pname)))
 
+;; autopair
+(require 'autopair)
+(autopair-global-mode)
+
+;; nREPL
 (add-hook 'nrepl-interaction-mode-hook
   'nrepl-turn-on-eldoc-mode)
 (add-hook 'nrepl-mode-hook 'subword-mode)
