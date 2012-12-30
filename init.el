@@ -27,10 +27,17 @@
 (require 'cl)
 
 (defvar emacs-root
-  (cond ((file-accessible-directory-p "/home/shannog/.emacs.d/") "/home/shannog/.emacs.d/")
-        ((file-accessible-directory-p "c:/cygwin/home/geoff/.emacs.d/") "c:/cygwin/home/geoff/.emacs.d/")
-        ((file-accessible-directory-p "/Users/geoff/.emacs.d/") "/Users/geoff/.emacs.d/")
-        (t "/home/geoff/.emacs.d/")) "My home directory.")
+  (cond ((file-accessible-directory-p
+          "/home/shannog/.emacs.d/")
+         "/home/shannog/.emacs.d/")
+        ((file-accessible-directory-p
+          "c:/cygwin/home/geoff/.emacs.d/")
+         "c:/cygwin/home/geoff/.emacs.d/")
+        ((file-accessible-directory-p
+          "/Users/geoff/.emacs.d/")
+         "/Users/geoff/.emacs.d/")
+        (t "/home/geoff/.emacs.d/"))
+  "My home directory.")
 
 (dolist (dir '("elpa/"
                "lisp/"
