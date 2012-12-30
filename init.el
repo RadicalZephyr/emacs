@@ -171,7 +171,21 @@
   (package-initialize))
 
 ;; Make sure extra packages are installed
-(dolist (pname '(autopair nrepl slime-ritz nrepl-ritz))
+(dolist (pname '(autopair
+                 clojure-mode
+                 clojure-test-mode
+                 clojurescript-mode
+                 erefactor
+                 flymake-php
+                 gnuplot
+                 magit
+                 nrepl
+                 nrepl-ritz
+                 paredit
+                 php-completion
+                 php-mode
+                 slime-ritz
+                 smart-tab))
   (when (not (package-installed-p pname))
     (package-install pname)))
 
