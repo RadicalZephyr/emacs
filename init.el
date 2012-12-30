@@ -32,27 +32,22 @@
         ((file-accessible-directory-p "/Users/geoff/.emacs.d/") "/Users/geoff/.emacs.d/")
         (t "/home/geoff/.emacs.d/")) "My home directory.")
 
-(labels ((add-path-list (list-to-add)
-                        (cond ((null list-to-add) t)
-                              (t (add-to-list 'load-path
-                          (concat emacs-root (car list-to-add)))
-                 (add-path-list (cdr list-to-add)))))
-         (add-auto-mode-list (list-to-add)
-                             (cond ((null list-to-add) t)
-                                   (t (add-to-list 'auto-mode-alist
-                           (car list-to-add))
-                      (add-auto-mode-list (cdr list-to-add))))))
-  (add-path-list '("elpa/"
-                   "lisp/"
-                   "color-theme/"
-                   "auto-complete/"
-                   "python-mode.el-6.0.4/"
-                   "ecb-2.4.1/"
-                   "jdee-2.4.0.1/lisp/"
-                   "jdibug/"))
-  (add-auto-mode-list '(("\\.erl?$" . erlang-mode)
-                        ("\\.hrl?$" . erlang-mode)
-                        ("\\.php?$" . php-mode))))
+(dolist (dir '("elpa/"
+               "lisp/"
+               "color-theme/"
+               "auto-complete/"
+               "python-mode.el-6.0.4/"
+               "ecb-2.4.1/"
+               "jdee-2.4.0.1/lisp/"
+               "jdibug/"))
+  (add-to-list 'load-path
+               (concat emacs-root dir)))
+
+(dolist (auto-mode-pair '(("\\.erl?$" . erlang-mode)
+                          ("\\.hrl?$" . erlang-mode)
+                          ("\\.php?$" . php-mode)))
+  (add-to-list 'auto-mode-alist
+               auto-mode-pair))
 
 ;;(require 'ezephyr-indentation "indentation.el")
 (require 'ezephyr-keys "keys.el")
