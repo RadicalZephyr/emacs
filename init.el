@@ -192,6 +192,9 @@
   (when (not (package-installed-p pname))
     (package-install pname)))
 
+(when (not (package-installed-p 'slime))
+  (package-install-file (concat emacs-root "slime-20101113.1.tar")))
+
 ;; autopair
 (require 'autopair)
 (autopair-global-mode)
