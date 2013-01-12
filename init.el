@@ -52,7 +52,8 @@
 
 (dolist (auto-mode-pair '(("\\.erl?$" . erlang-mode)
                           ("\\.hrl?$" . erlang-mode)
-                          ("\\.php?$" . php-mode)))
+                          ("\\.php?$" . php-mode)
+                          ("\\.rkt?$" . scheme-mode)))
   (add-to-list 'auto-mode-alist
                auto-mode-pair))
 
