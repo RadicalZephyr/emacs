@@ -197,7 +197,8 @@
 
 ;; autopair
 (require 'autopair)
-(autopair-global-mode)
+
+(add-hook c++-mode-hook 'autopair-mode)
 
 ;; nREPL
 (add-hook 'nrepl-interaction-mode-hook
@@ -206,7 +207,6 @@
 (add-hook 'nrepl-mode-hook 'paredit-mode)
 
 ;; Clojure mode configs
-(add-hook 'clojure-mode-hook 'autopair-mode)
 (add-hook 'clojure-mode-hook 'paredit-mode)
 
 ;; (load "slime.el")
