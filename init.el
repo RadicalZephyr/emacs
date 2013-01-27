@@ -205,6 +205,10 @@
 (add-hook 'nrepl-mode-hook 'subword-mode)
 (add-hook 'nrepl-mode-hook 'paredit-mode)
 
+;; Clojure mode configs
+(add-hook 'clojure-mode-hook 'autopair-mode)
+(add-hook 'clojure-mode-hook 'paredit-mode)
+
 ;; (load "slime.el")
 
 ;; (slime-setup '(slime-repl))
