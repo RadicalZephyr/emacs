@@ -198,7 +198,7 @@
 ;; autopair
 (require 'autopair)
 
-(add-hook c++-mode-hook 'autopair-mode)
+(add-hook 'c-mode-hook 'autopair-mode)
 
 ;; nREPL
 (add-hook 'nrepl-interaction-mode-hook
