@@ -7,6 +7,7 @@
  '(current-language-environment "Latin-1")
  '(default-input-method "latin-1-prefix")
  '(ecb-options-version "2.40")
+ '(exec-path (quote ("/home/shannog/local/bin" "/usr/lib/lightdm/lightdm" "/usr/local/sbin" "/usr/local/bin" "/usr/sbin" "/usr/bin" "/sbin" "/bin" "/usr/games" "/usr/local/games" "/home/shannog/local/libexec/emacs/24.0.95/x86_64-unknown-linux-gnu")))
  '(global-font-lock-mode t nil (font-lock))
  '(inhibit-startup-screen t)
  '(iswitchb-mode t)
@@ -38,6 +39,11 @@
          "/Users/geoff/.emacs.d/")
         (t "/home/geoff/.emacs.d/"))
   "My home directory.")
+
+(setenv "PATH"
+        (concat
+         "/home/shannog/local/bin" ";"
+        (getenv "PATH")))
 
 (dolist (dir '("elpa/"
                "lisp/"
