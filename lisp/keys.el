@@ -2,6 +2,7 @@
 (global-set-key "\C-x\C-b" 'switch-to-buffer)
 (global-set-key "\C-x\C-o" 'other-window)
 
+(global-set-key "\C-cg" 'magit-status)
 (global-set-key "\C-cw" 'what-face)
 (global-set-key "\C-c\C-u" 'unfill-paragraph)
 
@@ -37,10 +38,10 @@
 
 (global-set-key "\C-c/" 'comment-or-uncomment-region)
 
-(global-set-key (kbd "<C-up>") (lambda () 
+(global-set-key (kbd "<C-up>") (lambda ()
                                  (interactive)
                                  (scroll-down 1)))
 
-(global-set-key (kbd "<C-down>") (lambda () 
+(global-set-key (kbd "<C-down>") (lambda ()
                                  (interactive)
                                  (scroll-up 1)))
