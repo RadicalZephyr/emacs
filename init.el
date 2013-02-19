@@ -188,7 +188,9 @@
                  paredit
                  php-mode
                  slime-ritz
-                 smart-tab))
+                 smart-tab
+                 markdown-mode
+                 markdown-mode+))
   (when (not (package-installed-p pname))
     (package-install pname)))
 
