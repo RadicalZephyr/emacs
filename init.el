@@ -10,7 +10,7 @@
  '(global-font-lock-mode t nil (font-lock))
  '(inhibit-startup-screen t)
  '(iswitchb-mode t)
- '(nxml-child-indent 2)
+ '(nxml-child-indent 2 t)
  '(rng-schema-locating-files (quote ("schemas.xml" "/usr/share/emacs/24.1.50/etc/schema/schemas.xml" "~/.emacs.d/xml/schemas.xml")))
  '(safe-local-variable-values (quote ((Syntax . ANSI-Common-Lisp) (Base . 10))))
  '(save-place t nil (saveplace))
@@ -172,7 +172,9 @@
   (add-to-list 'package-archives
                '("melpa" . "http://melpa.milkbox.net/packages/") t)
   (package-initialize))
-(package-refresh-contents)
+
+(when (not package-archive-contents)
+  (package-refresh-contents))
 
 ;; Make sure extra packages are installed
 (dolist (pname '(autopair
@@ -187,15 +189,11 @@
                  nrepl-ritz
                  paredit
                  php-mode
-                 slime-ritz
                  smart-tab
                  markdown-mode
                  markdown-mode+))
   (when (not (package-installed-p pname))
     (package-install pname)))
-
-(when (not (package-installed-p 'slime))
-  (package-install-file (concat emacs-root "slime-20101113.1.tar")))
 
 ;; autopair
 (require 'autopair)
@@ -203,6 +201,12 @@
 (add-hook 'c-mode-hook 'autopair-mode)
 
 ;; nREPL
+(setq nrepl-hide-special-buffers t)
+(setq nrepl-popup-stacktraces nil)
+(setq nrepl-popup-stacktraces-in-repl t)
+
+(add-to-list 'same-window-buffer-names "*nrepl*")
+
 (add-hook 'nrepl-interaction-mode-hook
   'nrepl-turn-on-eldoc-mode)
 (add-hook 'nrepl-mode-hook 'subword-mode)
