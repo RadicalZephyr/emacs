@@ -184,6 +184,7 @@
 
 ;; Make sure extra packages are installed
 (dolist (pname '(autopair
+                 batch-mode
                  clojure-mode
                  clojure-test-mode
                  clojurescript-mode
