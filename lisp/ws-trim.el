@@ -112,7 +112,7 @@ Do this according to the hook `ws-trim-method-hook'.  With a prefix
 argument, ask for the trim method to use instead."
   (interactive "*P")
   (let ((ws-trim-method-hook (if arg (ws-trim-ask-method) ws-trim-method-hook))
-	(ws-trim-changed-region 'ignore)) ; ws-trim-after-change disabled now.
+  (ws-trim-changed-region 'ignore)) ; ws-trim-after-change disabled now.
     (save-excursion
       (run-hooks 'ws-trim-method-hook))))
 
@@ -146,8 +146,8 @@ Normally used in `ws-trim-method-hook'."
   "Replace unnecessary leading spaces with tabs on current line.
 Normally used in `ws-trim-method-hook'."
   (let* ((indent-tabs-mode t)
-	 (col (current-indentation))
-	 (tab-col (* (/ col tab-width) tab-width)))
+   (col (current-indentation))
+   (tab-col (* (/ col tab-width) tab-width)))
     (beginning-of-line)
     (skip-chars-forward "\t")
     (when (/= (current-column) tab-col)
@@ -158,7 +158,7 @@ Normally used in `ws-trim-method-hook'."
   "Replace leading tabs with spaces on current line.
 Normally used in `ws-trim-method-hook'."
   (let ((indent-tabs-mode nil)
-	(col (current-indentation)))
+  (col (current-indentation)))
     (beginning-of-line)
     (skip-chars-forward " ")
     (when (/= (current-column) col)
@@ -177,23 +177,23 @@ unnecessary leading spaces with tabs."
   "Replace all tabs with spaces on current line.
 Normally used in `ws-trim-method-hook'."
   (let ((indent-tabs-mode nil)
-	col)
+  col)
     (beginning-of-line)
     (while (progn
-	     (skip-chars-forward "^\t\n")
-	     (not (eolp)))
+       (skip-chars-forward "^\t\n")
+       (not (eolp)))
       (skip-chars-forward " ")
       (when (eq (following-char) ?\t)
-	(skip-chars-forward " \t")
-	(setq col (current-column))
-	(delete-horizontal-space)
-	(indent-to col)))))
+  (skip-chars-forward " \t")
+  (setq col (current-column))
+  (delete-horizontal-space)
+  (indent-to col)))))
 
 (defconst ws-trim-methods '(ws-trim-trailing
-			    ws-trim-leading-spaces
-			    ws-trim-leading-tabs
-			    ws-trim-leading
-			    ws-trim-tabs)
+          ws-trim-leading-spaces
+          ws-trim-leading-tabs
+          ws-trim-leading
+          ws-trim-tabs)
   "List of known trim methods.")
 
 ;;; WS Trim mode
@@ -294,22 +294,22 @@ it off.
 See the variable docstring for details about this mode."
   (interactive "P")
   (setq ws-trim-mode (if (null arg)
-			 (not ws-trim-mode)
-		       (> (prefix-numeric-value arg) 0)))
+       (not ws-trim-mode)
+           (> (prefix-numeric-value arg) 0)))
   (if ws-trim-mode
       (if (not (integerp ws-trim-level))
-	  (progn
-	    (error "`ws-trim-level' must be an integer")
-	    (setq ws-trim-mode nil))
-	(add-hook 'after-change-functions 'ws-trim-after-change nil t)
-	(add-hook 'post-command-hook 'ws-trim-post-command nil t)
-	(add-hook 'first-change-hook 'ws-trim-on-first-change nil t)
-	(add-hook 'write-contents-hooks 'ws-trim-on-write)
-	(run-hooks 'ws-trim-mode-hook)
-	(if (or (>= ws-trim-level 3)
-		(and (>= ws-trim-level 2) (buffer-modified-p)))
-	    (or buffer-read-only
-		(ws-trim-region-1 (point-min) (point-max)))))
+    (progn
+      (error "`ws-trim-level' must be an integer")
+      (setq ws-trim-mode nil))
+  (add-hook 'after-change-functions 'ws-trim-after-change nil t)
+  (add-hook 'post-command-hook 'ws-trim-post-command nil t)
+  (add-hook 'first-change-hook 'ws-trim-on-first-change nil t)
+  (add-hook 'write-contents-hooks 'ws-trim-on-write)
+  (run-hooks 'ws-trim-mode-hook)
+  (if (or (>= ws-trim-level 3)
+    (and (>= ws-trim-level 2) (buffer-modified-p)))
+      (or buffer-read-only
+    (ws-trim-region-1 (point-min) (point-max)))))
     (remove-hook 'after-change-functions 'ws-trim-after-change t)
     (remove-hook 'post-command-hook 'ws-trim-post-command t)
     (remove-hook 'first-change-hook 'ws-trim-on-first-change t)
@@ -336,17 +336,17 @@ See the variable docstring for details about this mode."
 
 (defun ws-trim-ask-method ()
   (let* ((alist (mapcar (lambda (fn) (cons (symbol-name fn) fn))
-			ws-trim-methods))
-	 (default (or (cdr-safe (assoc (find-if (lambda (item) (assoc item alist))
-						minibuffer-history)
-				       alist))
-		      (if (consp ws-trim-method-hook)
-			  (car ws-trim-method-hook)
-			ws-trim-method-hook)))
-	 (val (cdr-safe (assoc (completing-read
-				(format "Trim method (default %S): " default)
-				alist nil t)
-			       alist))))
+      ws-trim-methods))
+   (default (or (cdr-safe (assoc (find-if (lambda (item) (assoc item alist))
+            minibuffer-history)
+               alist))
+          (if (consp ws-trim-method-hook)
+        (car ws-trim-method-hook)
+      ws-trim-method-hook)))
+   (val (cdr-safe (assoc (completing-read
+        (format "Trim method (default %S): " default)
+        alist nil t)
+             alist))))
     (or val default)))
 
 (defun ws-trim-region-1 (from to)
@@ -362,72 +362,72 @@ See the variable docstring for details about this mode."
 (defun ws-trim-after-change (beg end length)
   (or (eq ws-trim-changed-region 'ignore)
       (save-excursion
-	(if (eq ws-trim-changed-region 'first-change)
-	    (setq ws-trim-changed-region (cons (point-min-marker) (point-max-marker)))
-	  (if (consp ws-trim-changed-region)
-	      (progn
-		(if (< beg (car ws-trim-changed-region))
-		    (set-marker (car ws-trim-changed-region)
-				(progn (goto-char beg) (beginning-of-line) (point))))
-		(if (> end (cdr ws-trim-changed-region))
-		    (set-marker (cdr ws-trim-changed-region)
-				(progn (goto-char end) (end-of-line) (point)))))
-	    (setq ws-trim-changed-region
-		  (cons (copy-marker (progn (goto-char beg) (beginning-of-line) (point)))
-			(copy-marker (progn (goto-char end) (end-of-line) (point)))))))
-	(or ws-trim-changed-newline
-	    (setq ws-trim-changed-newline
-		  (ws-trim-nlc (car ws-trim-changed-region)
-			       (cdr ws-trim-changed-region)))))))
+  (if (eq ws-trim-changed-region 'first-change)
+      (setq ws-trim-changed-region (cons (point-min-marker) (point-max-marker)))
+    (if (consp ws-trim-changed-region)
+        (progn
+    (if (< beg (car ws-trim-changed-region))
+        (set-marker (car ws-trim-changed-region)
+        (progn (goto-char beg) (beginning-of-line) (point))))
+    (if (> end (cdr ws-trim-changed-region))
+        (set-marker (cdr ws-trim-changed-region)
+        (progn (goto-char end) (end-of-line) (point)))))
+      (setq ws-trim-changed-region
+      (cons (copy-marker (progn (goto-char beg) (beginning-of-line) (point)))
+      (copy-marker (progn (goto-char end) (end-of-line) (point)))))))
+  (or ws-trim-changed-newline
+      (setq ws-trim-changed-newline
+      (ws-trim-nlc (car ws-trim-changed-region)
+             (cdr ws-trim-changed-region)))))))
 
 (defun ws-trim-post-command ()
   (if (consp ws-trim-changed-region)
       (let* ((begmark (car ws-trim-changed-region))
-	     (endmark (cdr ws-trim-changed-region))
-	     (beg (marker-position begmark))
-	     (end (marker-position endmark)))
-	;; This test isn't essential, but it quickly eliminates almost
-	;; all cases when nothing should be done.
-	(when (or ws-trim-changed-newline (< (point) beg) (> (point) end))
-	  (save-excursion
-	    (let* ((posmark (point-marker))
-		   (pos (progn (beginning-of-line) (point)))
-		   point-in-region)
-	      (setq ws-trim-changed-region 'ignore) ; ws-trim-after-change disabled now.
-	      (if (null ws-trim-changed-newline)
-		  (if (= pos beg)
-		      (setq point-in-region t)
-		    ;; One line changed and point not on it.
-		    (goto-char beg)
-		    (run-hooks 'ws-trim-method-hook))
-		(setq point-in-region (and (>= pos beg) (<= pos end)))
-		(if (and point-in-region (eq (ws-trim-nlc beg end) 1))
-		    ;; Two lines changed and point on one of them -
-		    ;; trim the other one.  This is the newline
-		    ;; exception in level 0 trimming.
-		    (progn (goto-char beg)
-			   (if (= pos beg) (forward-line))
-			   (run-hooks 'ws-trim-method-hook))
-		  (if (>= ws-trim-level 1)
-		      ;; Trim changed region except current line.
-		      (if (not point-in-region)
-			  (ws-trim-region-1 beg end)
-			(if (< beg pos) (ws-trim-region-1 beg pos))
-			(goto-char posmark) (end-of-line)
-			(if (< (point) endmark) (ws-trim-region-1 (point) endmark)))
-		    (setq point-in-region nil))))
-	      (if point-in-region
-		  (setq ws-trim-changed-region
-			(cons (copy-marker
-			       (progn (goto-char posmark) (beginning-of-line) (point)))
-			      (copy-marker
-			       (progn (goto-char posmark) (end-of-line) (point)))))
-		(setq ws-trim-changed-region nil))
-	      (setq ws-trim-changed-newline nil)
-	      (set-marker begmark nil)
-	      (set-marker endmark nil)
-	      (set-marker posmark nil)
-	      ))))))
+       (endmark (cdr ws-trim-changed-region))
+       (beg (marker-position begmark))
+       (end (marker-position endmark)))
+  ;; This test isn't essential, but it quickly eliminates almost
+  ;; all cases when nothing should be done.
+  (when (or ws-trim-changed-newline (< (point) beg) (> (point) end))
+    (save-excursion
+      (let* ((posmark (point-marker))
+       (pos (progn (beginning-of-line) (point)))
+       point-in-region)
+        (setq ws-trim-changed-region 'ignore) ; ws-trim-after-change disabled now.
+        (if (null ws-trim-changed-newline)
+      (if (= pos beg)
+          (setq point-in-region t)
+        ;; One line changed and point not on it.
+        (goto-char beg)
+        (run-hooks 'ws-trim-method-hook))
+    (setq point-in-region (and (>= pos beg) (<= pos end)))
+    (if (and point-in-region (eq (ws-trim-nlc beg end) 1))
+        ;; Two lines changed and point on one of them -
+        ;; trim the other one.  This is the newline
+        ;; exception in level 0 trimming.
+        (progn (goto-char beg)
+         (if (= pos beg) (forward-line))
+         (run-hooks 'ws-trim-method-hook))
+      (if (>= ws-trim-level 1)
+          ;; Trim changed region except current line.
+          (if (not point-in-region)
+        (ws-trim-region-1 beg end)
+      (if (< beg pos) (ws-trim-region-1 beg pos))
+      (goto-char posmark) (end-of-line)
+      (if (< (point) endmark) (ws-trim-region-1 (point) endmark)))
+        (setq point-in-region nil))))
+        (if point-in-region
+      (setq ws-trim-changed-region
+      (cons (copy-marker
+             (progn (goto-char posmark) (beginning-of-line) (point)))
+            (copy-marker
+             (progn (goto-char posmark) (end-of-line) (point)))))
+    (setq ws-trim-changed-region nil))
+        (setq ws-trim-changed-newline nil)
+        (set-marker begmark nil)
+        (set-marker endmark nil)
+        (set-marker posmark nil)
+        ))))))
 
 (defun ws-trim-on-first-change ()
   (if (>= ws-trim-level 2)
@@ -436,22 +436,22 @@ See the variable docstring for details about this mode."
 (defun ws-trim-on-write ()
   (let (beg end)
     (if (consp ws-trim-changed-region)
-	(setq beg (marker-position (car ws-trim-changed-region))
-	      end (marker-position (cdr ws-trim-changed-region))))
+  (setq beg (marker-position (car ws-trim-changed-region))
+        end (marker-position (cdr ws-trim-changed-region))))
     (ws-trim-reset-changed-region 'ignore) ; ws-trim-after-change disabled now.
     (if (or (>= ws-trim-level 3)
-	    (and (>= ws-trim-level 2) (buffer-modified-p)))
-	;; A bit defensive test - is this function ever called if the
-	;; buffer is unmodified?
-	(or buffer-read-only
-	    (ws-trim-region-1 (point-min) (point-max)))
+      (and (>= ws-trim-level 2) (buffer-modified-p)))
+  ;; A bit defensive test - is this function ever called if the
+  ;; buffer is unmodified?
+  (or buffer-read-only
+      (ws-trim-region-1 (point-min) (point-max)))
       (if beg
-	  (if ws-trim-changed-newline
-	      (if (>= ws-trim-level 1)
-		  (ws-trim-region-1 beg end))
-	    (save-excursion
-	      (goto-char beg)
-	      (run-hooks 'ws-trim-method-hook)))))
+    (if ws-trim-changed-newline
+        (if (>= ws-trim-level 1)
+      (ws-trim-region-1 beg end))
+      (save-excursion
+        (goto-char beg)
+        (run-hooks 'ws-trim-method-hook)))))
     (setq ws-trim-changed-region nil))
   nil)
 
@@ -468,8 +468,8 @@ FROM <= TO is assumed."
     (save-match-data
       (goto-char from)
       (cond ((not (re-search-forward "[\n\C-m]" to t)) nil)
-	    ((not (re-search-forward "[\n\C-m]" to t)) 1)
-	    (t t)))))
+      ((not (re-search-forward "[\n\C-m]" to t)) 1)
+      (t t)))))
 
 ;;; Global WS Trim mode
 
@@ -523,12 +523,12 @@ off in buffers depending on their major modes.  The behavior is
 controlled by the `ws-trim-global-modes' variable."
   (interactive "P")
   (setq global-ws-trim-mode (if (null arg) (not ws-trim-mode)
-			      (> (prefix-numeric-value arg) 0)))
+            (> (prefix-numeric-value arg) 0)))
   (if global-ws-trim-mode
       (progn
-	(add-hook 'find-file-hooks 'global-ws-trim-init-ws-trim)
-	(setq ws-trim-buffers (buffer-list))
-	(global-ws-trim-init-ws-trim))
+  (add-hook 'find-file-hooks 'global-ws-trim-init-ws-trim)
+  (setq ws-trim-buffers (buffer-list))
+  (global-ws-trim-init-ws-trim))
     (remove-hook 'find-file-hooks 'global-ws-trim-init-ws-trim)))
 
 (defun ws-trim-mode-heuristic ()
@@ -547,7 +547,7 @@ mode by making the buffer read only and/or by disabling all self-
 inserting keys (typically by using `suppress-keymap').  The heuristic
 detects both these cases."
   (if (or buffer-read-only
-	  (null (where-is-internal 'self-insert-command nil 'non-ascii)))
+    (null (where-is-internal 'self-insert-command nil 'non-ascii)))
       0
     1))
 
@@ -557,30 +557,30 @@ detects both these cases."
   (remove-hook 'post-command-hook 'global-ws-trim-init-ws-trim)
   (while ws-trim-buffers
     (if (and (buffer-live-p (car ws-trim-buffers))
-	     (not (local-variable-p 'ws-trim-mode (car ws-trim-buffers))))
-	(save-excursion
-	  (set-buffer (car ws-trim-buffers))
-	  (ws-trim-mode
-	   (cond ((eq ws-trim-global-modes t) 1)
-		 ((eq ws-trim-global-modes 'guess) (ws-trim-mode-heuristic))
-		 ((consp ws-trim-global-modes)
-		  (catch 'done
-		    (let (modes-list)
-		      (if (eq (car-safe ws-trim-global-modes) 'guess)
-			  (setq modes-list (cdr-safe ws-trim-global-modes))
-			(setq modes-list (list ws-trim-global-modes)))
-		      (while modes-list
-			(if (eq (car-safe (car-safe modes-list)) 'not)
-			    (if (memq major-mode (cdr-safe (car-safe modes-list)))
-				(throw 'done 0))
-			  (if (memq major-mode (car-safe modes-list))
-			      (throw 'done 1)))
-			(setq modes-list (cdr-safe modes-list))))
-		    (cond ((eq (car-safe ws-trim-global-modes) 'not) 1)
-			  ((eq (car-safe ws-trim-global-modes) 'guess)
-			   (ws-trim-mode-heuristic))
-			  (t 0))))
-		 (t 0)))))
+       (not (local-variable-p 'ws-trim-mode (car ws-trim-buffers))))
+  (save-excursion
+    (set-buffer (car ws-trim-buffers))
+    (ws-trim-mode
+     (cond ((eq ws-trim-global-modes t) 1)
+     ((eq ws-trim-global-modes 'guess) (ws-trim-mode-heuristic))
+     ((consp ws-trim-global-modes)
+      (catch 'done
+        (let (modes-list)
+          (if (eq (car-safe ws-trim-global-modes) 'guess)
+        (setq modes-list (cdr-safe ws-trim-global-modes))
+      (setq modes-list (list ws-trim-global-modes)))
+          (while modes-list
+      (if (eq (car-safe (car-safe modes-list)) 'not)
+          (if (memq major-mode (cdr-safe (car-safe modes-list)))
+        (throw 'done 0))
+        (if (memq major-mode (car-safe modes-list))
+            (throw 'done 1)))
+      (setq modes-list (cdr-safe modes-list))))
+        (cond ((eq (car-safe ws-trim-global-modes) 'not) 1)
+        ((eq (car-safe ws-trim-global-modes) 'guess)
+         (ws-trim-mode-heuristic))
+        (t 0))))
+     (t 0)))))
     (setq ws-trim-buffers (cdr ws-trim-buffers))))
 
 (defun global-ws-trim-change-major-mode ()
@@ -593,7 +593,7 @@ detects both these cases."
 ;; Put the minor mode on the global minor-mode-alist.
 (or (assq 'ws-trim-mode minor-mode-alist)
     (setq minor-mode-alist (cons '(ws-trim-mode ws-trim-mode-line-string)
-				 minor-mode-alist)))
+         minor-mode-alist)))
 
 (add-hook 'change-major-mode-hook 'global-ws-trim-change-major-mode)
 

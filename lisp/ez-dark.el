@@ -7,7 +7,7 @@
   (color-theme-install
    '(color-theme-ez-dark
        ((foreground-color . "#b9d3cf")
-         (background-color . "#282828") 
+         (background-color . "#282828")
          (background-mode . dark))
        (bold ((t (:bold t))))
        (bold-italic ((t (:italic t :bold t))))
@@ -26,13 +26,13 @@
        (font-lock-string-face ((t (:foreground "#aca000"))))
        (font-lock-type-face ((t (:bold t :foreground "#77608c"))))
        (font-lock-variable-name-face ((t (:bold t :foreground "#ffffff"))))
-       (font-lock-warning-face ((t (:bold t :italic nil :underline nil 
+       (font-lock-warning-face ((t (:bold t :italic nil :underline nil
                                      :foreground "yellow"))))
        (hl-line ((t (:background "#112233"))))
        (mode-line ((t (:foreground "#ffffff" :background "#293433"))))
        (minibuffer ((t (:bold t :foreground "#8b0000" :background "#e2cb36"))))
        (minibuffer-prompt ((t (:foreground "#006600"))))
        (region ((t (:foreground nil :background "#555555"))))
-       (show-paren-match-face ((t (:bold t :foreground "#ffffff" 
+       (show-paren-match-face ((t (:bold t :foreground "#ffffff"
                                     :background "#050505")))))))
 (provide 'ezephyr-dark-theme)

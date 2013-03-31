@@ -8,7 +8,7 @@
 
 (defun rot-helper (list num)
   (let ((front (nthcdr num list)))
-    (setcdr (nthcdr (- num 1) list) 
+    (setcdr (nthcdr (- num 1) list)
             nil)
     (append front list)))
 
@@ -21,6 +21,6 @@
          (if (> (abs num) (length list))
              (setq num (- num (length list))))
          (cond ((> num 0) (rot-helper list num))
-               ((< num 0) (rot-helper list 
+               ((< num 0) (rot-helper list
                                       (+ (length list)
                                          num)))))))

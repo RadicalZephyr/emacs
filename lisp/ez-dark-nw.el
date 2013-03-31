@@ -7,7 +7,7 @@
   (color-theme-install
    '(color-theme-ez-dark
        ((foreground-color . "white")
-         (background-color . "black") 
+         (background-color . "black")
          (background-mode . dark))
        (bold ((t (:bold t))))
        (bold-italic ((t (:italic t :bold t))))
@@ -26,12 +26,12 @@
        (font-lock-string-face ((t (:foreground "yellow"))))
        (font-lock-type-face ((t (:bold t :foreground "purple"))))
        (font-lock-variable-name-face ((t (:bold :foreground "cyan"))))
-       (font-lock-warning-face ((t (:bold t :italic nil :underline nil 
+       (font-lock-warning-face ((t (:bold t :italic nil :underline nil
                                      :foreground "yellow"))))
        (hl-line ((t (:background "yellow"))))
        (mode-line ((t (:foreground "white" :background "blue"))))
        (region ((t (:foreground "white" :background "magenta"))))
-       (show-paren-match-face ((t (:bold t :foreground "blue" 
+       (show-paren-match-face ((t (:bold t :foreground "blue"
                                     :background "white")))))))
 ;; (color-theme-ez-dark-nw)
 (provide 'ezephyr-dark-theme-nw)
