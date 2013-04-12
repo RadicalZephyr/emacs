@@ -205,7 +205,7 @@
 ;; autopair
 (require 'autopair)
 
-(add-hook 'c-mode-hook 'autopair-mode)
+(add-hook 'c-mode-common-hook 'autopair-mode)
 
 ;; nREPL
 (setq nrepl-hide-special-buffers t)
