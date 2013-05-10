@@ -8,3 +8,4 @@ elpa/archives/*
 url/*
 .emacs.desktop*
 /semanticdb/
+/ede-projects.el
