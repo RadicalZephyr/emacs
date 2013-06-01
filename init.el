@@ -123,7 +123,7 @@
 
 ;; Visual Modifications
 
-(setq default-tab-width 4)
+(setq default-tab-width 2)
 
 (setq x-stretch-cursor t)
 (set-face-attribute 'default nil :height 150)
@@ -238,6 +238,3 @@
 (put 'narrow-to-region 'disabled nil)
 
 (ansi-color-for-comint-mode-on)
-
-(setq default-tab-width 2)
-
