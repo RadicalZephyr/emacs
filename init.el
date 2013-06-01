@@ -128,11 +128,13 @@
 (setq x-stretch-cursor t)
 (set-face-attribute 'default nil :height 150)
 
-(column-number-mode)
+;; Enable some modes
+(dolist (mode '(column-number-mode
+                global-linum-mode))
+  (when (fboundp mode)
+    (funcall mode)))
 
-(global-linum-mode)
-
-;; Modes to disable
+;; Disable some modes
 (dolist (mode '(scroll-bar-mode
                 tool-bar-mode
                 menu-bar-mode))
