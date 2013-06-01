@@ -189,6 +189,7 @@
                  erefactor
                  flymake-php
                  gnuplot
+                 inf-ruby
                  magit
                  nrepl
                  nrepl-ritz
@@ -219,6 +220,10 @@
 
 ;; Clojure mode configs
 (add-hook 'clojure-mode-hook 'paredit-mode)
+
+;; Ruby mode configs
+(require 'inf-ruby)
+(add-hook 'ruby-mode-hook 'inf-ruby-setup-keybindings)
 
 ;; (load "slime.el")
 
