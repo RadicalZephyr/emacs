@@ -132,9 +132,12 @@
 
 (global-linum-mode)
 
-(if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
-(if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
-(if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
+;; Modes to disable
+(dolist (mode '(scroll-bar-mode
+                tool-bar-mode
+                menu-bar-mode))
+  (when (fboundp mode)
+    (funcall mode -1)))
 
 (setq visible-bell t)
 
