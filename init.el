@@ -117,7 +117,7 @@
 
 ;; Daemon/server setup
 (server-start)
-(desktop-save-mode 1)
+(desktop-save-mode)
 (require 'midnight)
 (midnight-delay-set 'midnight-delay "6:30am")
 
