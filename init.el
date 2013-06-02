@@ -16,6 +16,7 @@
  '(ruby-indent-level 2)
  '(safe-local-variable-values (quote ((Syntax . ANSI-Common-Lisp) (Base . 10))))
  '(save-place t nil (saveplace))
+ '(semantic-default-submodes (quote (global-semantic-decoration-mode global-semantic-idle-scheduler-mode global-semanticdb-minor-mode global-semantic-idle-local-symbol-highlight-mode)))
  '(show-paren-mode t nil (paren))
  '(text-mode-hook (quote (turn-on-auto-fill text-mode-hook-identify)))
  '(transient-mark-mode (quote identity)))
@@ -81,19 +82,9 @@
   (setq mac-command-modifier 'meta)
   (setq special-display-regexps (remove "[ ]?\\*[hH]elp.*" special-display-regexps)))
 
-;; CEDET
-;;(load-file (concat emacs-root "cedet-1.1/common/cedet.el"))
-
-;; JDEE
-;; (require 'jde)
-;; (defun screen-width nil -1)
-;; (define-obsolete-function-alias 'make-local-hook 'ignore "21.1")
-
-;; JDIBUG
-;;(require 'jdibug)
-
-;; ECB
-;;(require 'ecb)
+;; CEDET/Semantic Setup
+(require 'semantic/ia)
+(require 'semantic/bovine/gcc)
 
 ;; Setup template mode
 (require 'template)
