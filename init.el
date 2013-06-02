@@ -39,13 +39,14 @@
         ((file-accessible-directory-p
           "/Users/geoff/.emacs.d/")
          "/Users/geoff/.emacs.d/")
-        (t "/home/geoff/.emacs.d/"))
+        (t (concat (getenv "HOME")
+                   "/.emacs.d/")))
   "My home directory.")
 
 (setenv "PATH"
-        (concat
-         "/home/shannog/local/bin" ";"
-        (getenv "PATH")))
+        (concat (getenv "HOME")
+                "/local/bin" ";"
+                (getenv "PATH")))
 
 (dolist (dir '("elpa/"
                "lisp/"
@@ -56,7 +57,7 @@
                "jdee-2.4.0.1/lisp/"
                "jdibug/"))
   (add-to-list 'load-path
-               (concat emacs-root dir)))
+               (concat emacs-root dir))))
 
 (dolist (auto-mode-pair '(("\\.erl?$" . erlang-mode)
                           ("\\.hrl?$" . erlang-mode)
@@ -80,7 +81,8 @@
 ;; Mac specific changes
 (when (eq system-type 'darwin)
   (setq mac-command-modifier 'meta)
-  (setq special-display-regexps (remove "[ ]?\\*[hH]elp.*" special-display-regexps)))
+  (setq special-display-regexps
+        (remove "[ ]?\\*[hH]elp.*" special-display-regexps)))
 
 ;; CEDET/Semantic Setup
 (require 'semantic/ia)
@@ -89,19 +91,24 @@
 ;; Setup template mode
 (require 'template)
 (template-initialize)
-(setq template-default-directories (cons (concat emacs-root "templates/") template-default-directories))
+(setq template-default-directories
+      (cons (concat emacs-root "templates/")
+            template-default-directories))
 
 ;; Setup python-mode
-(setq py-install-directory (concat emacs-root "python-mode.el-6.0.4/"))
+(setq py-install-directory
+      (concat emacs-root "python-mode.el-6.0.4/"))
 (require 'python-mode)
 
 ;; Setup auto-complete
 (require 'auto-complete-config)
-(add-to-list 'ac-dictionary-directories (concat emacs-root "auto-complete/ac-dict"))
+(add-to-list 'ac-dictionary-directories
+             (concat emacs-root "auto-complete/ac-dict"))
 (ac-config-default)
 
 (setq completion-ignored-extensions
-      (append '(".ali" ".exe" ".beam") completion-ignored-extensions))
+      (append '(".ali" ".exe" ".beam")
+              completion-ignored-extensions))
 
 ;; Make system copy interact with emacs kill ring
 (setq x-select-enable-clipboard t)
