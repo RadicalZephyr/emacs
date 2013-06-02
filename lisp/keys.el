@@ -30,15 +30,9 @@
 (global-set-key "\C-\M-s" 'isearch-forward)
 
 ;; Swap line upwards
-(global-set-key "\C-xt" (lambda ()
+(global-set-key "\C-ct" (lambda ()
                            (interactive)
                            (transpose-lines -1)))
-
-(global-set-key "\C-z" 'compile)
-
-(provide 'ezephyr-keys)
-
-(global-set-key "\C-c/" 'comment-or-uncomment-region)
 
 (global-set-key (kbd "<C-up>") (lambda ()
                                  (interactive)
@@ -47,3 +41,5 @@
 (global-set-key (kbd "<C-down>") (lambda ()
                                  (interactive)
                                  (scroll-up 1)))
+
+(provide 'ezephyr-keys)
