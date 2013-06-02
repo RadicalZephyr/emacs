@@ -209,7 +209,11 @@
 ;; autopair
 (require 'autopair)
 
-(add-hook 'c-mode-common-hook 'autopair-mode)
+(add-hook 'c-mode-common-hook
+          (lambda ()
+            (autopair-mode)
+            (add-to-list 'ac-sources
+                         'ac-source-semantic)))
 
 ;; nREPL
 (setq nrepl-hide-special-buffers t)
