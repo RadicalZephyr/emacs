@@ -57,7 +57,7 @@
                "jdee-2.4.0.1/lisp/"
                "jdibug/"))
   (add-to-list 'load-path
-               (concat emacs-root dir))))
+               (concat emacs-root dir)))
 
 (dolist (auto-mode-pair '(("\\.erl?$" . erlang-mode)
                           ("\\.hrl?$" . erlang-mode)
