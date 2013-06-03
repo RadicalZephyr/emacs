@@ -4,7 +4,7 @@
 
 (global-set-key "\C-cg" 'magit-status)
 (global-set-key "\C-cw" 'what-face)
-(global-set-key "\C-c\C-u" 'unfill-paragraph)
+(global-set-key "\C-c-u" 'unfill-paragraph)
 
 ;; Probably shouldn't be here, but what the hell
 (global-set-key "\C-c\C-l" 'edebug-defun)
@@ -18,7 +18,7 @@
 (global-set-key "\C-z" 'compile)
 (global-set-key "\C-c/" 'comment-or-uncomment-region)
 
-(global-set-key "\C-c\C-f" 'desktop-change-dir)
+(global-set-key "\C-cf" 'desktop-change-dir)
 
 (global-set-key [f12] 'man)
 
