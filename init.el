@@ -59,10 +59,10 @@
   (add-to-list 'load-path
                (concat emacs-root dir)))
 
-(dolist (auto-mode-pair '(("\\.erl?$" . erlang-mode)
-                          ("\\.hrl?$" . erlang-mode)
-                          ("\\.php?$" . php-mode)
-                          ("\\.rkt?$" . scheme-mode)))
+(dolist (auto-mode-pair '(("\\.php\\'" . php-mode)
+                          ("\\.rkt\\'" . scheme-mode)
+                          ("\\.md\\'" . markdown-mode)
+                          ("\\.markdown\\'" . markdown-mode)))
   (add-to-list 'auto-mode-alist
                auto-mode-pair))
 
