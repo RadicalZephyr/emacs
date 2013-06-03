@@ -88,6 +88,8 @@
 (require 'semantic/ia)
 (require 'semantic/bovine/gcc)
 
+(global-ede-mode)
+
 ;; Setup template mode
 (require 'template)
 (template-initialize)
