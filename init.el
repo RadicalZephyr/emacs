@@ -234,6 +234,9 @@
 (require 'inf-ruby)
 (add-hook 'ruby-mode-hook 'inf-ruby-setup-keybindings)
 
+;; Lisp mode setups
+(add-hook 'emacs-lisp-mode-hook 'paredit-mode)
+
 ;; (load "slime.el")
 
 ;; (slime-setup '(slime-repl))
