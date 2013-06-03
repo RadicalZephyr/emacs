@@ -227,15 +227,15 @@
 (add-hook 'nrepl-mode-hook 'subword-mode)
 (add-hook 'nrepl-mode-hook 'paredit-mode)
 
-;; Clojure mode configs
-(add-hook 'clojure-mode-hook 'paredit-mode)
-
 ;; Ruby mode configs
 (require 'inf-ruby)
 (add-hook 'ruby-mode-hook 'inf-ruby-setup-keybindings)
 
 ;; Lisp mode setups
 (add-hook 'emacs-lisp-mode-hook 'paredit-mode)
+(add-hook 'scheme-mode-hook 'paredit-mode)
+(add-hook 'lisp-mode-hook 'paredit-mode)
+(add-hook 'clojure-mode-hook 'paredit-mode)
 
 ;; (load "slime.el")
 
