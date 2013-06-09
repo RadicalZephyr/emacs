@@ -194,7 +194,6 @@
                  clojure-mode
                  csharp-mode
                  clojure-test-mode
-                 clojurescript-mode
                  erefactor
                  flymake-php
                  gnuplot
