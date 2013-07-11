@@ -1,24 +1,47 @@
-%%% TEMPLATE.tex.tpl --- (>>>POINT<<<)
+%%% TEMPLATE.tex.tpl ---
 
 %% Author: (>>>AUTHOR<<<)
-%% Version: $Id: (>>>FILE<<<),v 0.0 (>>>VC_DATE<<<) (>>>LOGIN_NAME<<<) Exp$
 
+\documentclass[12pt]{article}
 
-\documentclass[12pt,draft,a4paper]{article}
-%%\usepackage[debugshow,final]{graphics}
+\newcommand{\name}{ Geoff Shannon }
+\newcommand{\problemset}{ (>>>POINT<<<) }
 
-%%\revision$Header: (>>>DIR<<<)(>>>FILE<<<),v 0.0 (>>>VC_DATE<<<) (>>>LOGIN_NAME<<<) Exp$
+\usepackage[dvips]{graphics,color}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{latexsym}
+\usepackage{enumerate}
+
+\setlength{\parskip}{1pc}
+\setlength{\parindent}{0pt}
+\setlength{\topmargin}{-3pc}
+\setlength{\textheight}{9.5in}
+\setlength{\oddsidemargin}{0pc}
+\setlength{\evensidemargin}{0pc}
+\setlength{\textwidth}{6.5in}
 
 \begin{document}
 
-
 %%%%##########################################################################
+
+\framebox{
+  \vbox{
+    CS405 \hfill {\bf \problemset}
+    \hfill \\
+    \name \hfill \today \\
+  }
+}
+\bigskip
+
+%%%%##########################################################################
+
 
 \section{(>>>1<<<)}
 
 
 
-
 %%%%##########################################################################
 
 \end{document}
