@@ -84,6 +84,10 @@
   (setq special-display-regexps
         (remove "[ ]?\\*[hH]elp.*" special-display-regexps)))
 
+;; Windows specific changes
+(when (eq system-type 'windows-nt)
+  (setq magit-git-executable "C:\\Program Files (x86)\\Git\\bin\\git.exe"))
+
 ;; CEDET/Semantic Setup
 (require 'semantic/ia)
 (require 'semantic/bovine/gcc)
@@ -182,13 +186,13 @@
                '("melpa" . "http://melpa.milkbox.net/packages/") t)
   (package-initialize))
 
-(when (not package-archive-contents)
-  (package-refresh-contents))
+(package-refresh-contents)
 
 ;; Make sure extra packages are installed
 (dolist (pname '(autopair
                  batch-mode
                  clojure-mode
+                 csharp-mode
                  clojure-test-mode
                  clojurescript-mode
                  erefactor
@@ -214,6 +218,13 @@
             (autopair-mode)
             (add-to-list 'ac-sources
                          'ac-source-semantic)))
+
+;; csharp
+(add-hook 'csharp-mode-hook
+          (lambda ()
+            (setq indent-tabs-mode t)
+            (push ?{
+                  (getf autopair-dont-pair :never))))
 
 ;; nREPL
 (setq nrepl-hide-special-buffers t)
