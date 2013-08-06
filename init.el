@@ -222,6 +222,7 @@
 (add-hook 'csharp-mode-hook
           (lambda ()
             (setq indent-tabs-mode t)
+            (set (make-local-variable 'compile-command) "xbuild")
             (push ?{
                   (getf autopair-dont-pair :never))))
 
