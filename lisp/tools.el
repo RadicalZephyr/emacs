@@ -38,6 +38,8 @@ vi style of % jumping to matching brace."
                                 mouse-set-point
                                 next-buffer
                                 previous-buffer
+                                next-line
+                                previous-line
                                 )
                  ))
       (self-insert-command (or arg 1))
