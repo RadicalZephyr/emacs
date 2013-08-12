@@ -110,6 +110,9 @@
              (concat emacs-root "auto-complete/ac-dict"))
 (ac-config-default)
 
+;; Setup iswitchb-mode
+(add-to-list 'iswitchb-buffer-ignore "*Messages*")
+
 (setq completion-ignored-extensions
       (append '(".ali" ".exe" ".beam")
               completion-ignored-extensions))
