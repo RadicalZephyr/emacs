@@ -69,8 +69,8 @@
 (require 'ezephyr-lisp-tools "tools.el")
 (require 'ezephyr-latex-tools "latex-tools.el")
 
-(require 'ezephyr-dark-theme "ez-dark.el")
-(require 'ezephyr-dark-theme-nw "ez-dark-nw.el")
+(require 'ezephyr-dark)
+(require 'ezephyr-dark-nw)
 
 (load-file (concat emacs-root "macros/tools.macs"))
 
@@ -150,8 +150,8 @@
 (setq visible-bell t)
 
 (if window-system
-    (color-theme-ez-dark)
-  (color-theme-ez-dark-nw))
+    (color-theme-ezephyr-dark)
+  (color-theme-ezephyr-dark-nw))
 
 (require 'cc-mode)
 

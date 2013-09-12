@@ -1,11 +1,11 @@
 (require 'color-theme)
 (color-theme-initialize)
-(defun color-theme-ez-dark-nw ()
+(defun color-theme-ezephyr-dark-nw ()
   "dark color theme created by ezephyr, Oct 2010"
 
   (interactive)
   (color-theme-install
-   '(color-theme-ez-dark
+   '(color-theme-ezephyr-dark-nw
        ((foreground-color . "white")
          (background-color . "black")
          (background-mode . dark))
@@ -33,5 +33,4 @@
        (region ((t (:foreground "white" :background "magenta"))))
        (show-paren-match-face ((t (:bold t :foreground "blue"
                                     :background "white")))))))
-;; (color-theme-ez-dark-nw)
-(provide 'ezephyr-dark-theme-nw)
+(provide 'ezephyr-dark-nw)

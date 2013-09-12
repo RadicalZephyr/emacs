@@ -1,11 +1,11 @@
 (require 'color-theme)
 (color-theme-initialize)
-(defun color-theme-ez-dark ()
+(defun color-theme-ezephyr-dark ()
   "dark color theme created by ezephyr, Oct 2010"
 
   (interactive)
   (color-theme-install
-   '(color-theme-ez-dark
+   '(color-theme-ezephyr-dark
        ((foreground-color . "#b9d3cf")
          (background-color . "#282828")
          (background-mode . dark))
@@ -35,4 +35,4 @@
        (region ((t (:foreground nil :background "#555555"))))
        (show-paren-match-face ((t (:bold t :foreground "#ffffff"
                                     :background "#050505")))))))
-(provide 'ezephyr-dark-theme)
+(provide 'ezephyr-dark)
