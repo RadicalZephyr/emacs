@@ -79,6 +79,7 @@
 ;; Mac specific changes
 (when (eq system-type 'darwin)
   (setq mac-command-modifier 'meta)
+  (setenv "GIT_SSH" "/usr/bin/ssh")
   (setq special-display-regexps
         (remove "[ ]?\\*[hH]elp.*" special-display-regexps)))
 
@@ -102,7 +103,7 @@
 ;; Setup python-mode
 (setq py-install-directory
       (concat emacs-root "python-mode.el-6.0.4/"))
-(require 'python-mode)
+;;(require 'python-mode)
 
 ;; Setup auto-complete
 (require 'auto-complete-config)
