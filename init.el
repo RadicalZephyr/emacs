@@ -5,16 +5,20 @@
  ;; If there is more than one, they won't work right.
  '(case-fold-search t)
  '(ecb-options-version "2.40")
- '(exec-path (quote ("/home/shannog/local/bin" "/usr/lib/lightdm/lightdm" "/usr/local/sbin" "/usr/local/bin" "/usr/sbin" "/usr/bin" "/sbin" "/bin" "/usr/games" "/usr/local/games" "/home/shannog/local/libexec/emacs/24.0.95/x86_64-unknown-linux-gnu")))
  '(global-font-lock-mode t nil (font-lock))
  '(inhibit-startup-screen t)
  '(iswitchb-mode t)
+ '(nrepl-server-command "/home/shannog/local/bin/lein repl :headless")
  '(nxml-child-indent 2 t)
- '(rng-schema-locating-files (quote ("schemas.xml" "/usr/share/emacs/24.1.50/etc/schema/schemas.xml" "~/.emacs.d/xml/schemas.xml")))
+ '(rng-schema-locating-files
+   (quote
+    ("schemas.xml" "/usr/share/emacs/24.1.50/etc/schema/schemas.xml" "~/.emacs.d/xml/schemas.xml")))
  '(ruby-indent-level 2)
  '(safe-local-variable-values (quote ((Syntax . ANSI-Common-Lisp) (Base . 10))))
  '(save-place t nil (saveplace))
- '(semantic-default-submodes (quote (global-semantic-decoration-mode global-semantic-idle-scheduler-mode global-semanticdb-minor-mode global-semantic-idle-local-symbol-highlight-mode)))
+ '(semantic-default-submodes
+   (quote
+    (global-semantic-decoration-mode global-semantic-idle-scheduler-mode global-semanticdb-minor-mode global-semantic-idle-local-symbol-highlight-mode)))
  '(show-paren-mode t nil (paren))
  '(text-mode-hook (quote (turn-on-auto-fill text-mode-hook-identify)))
  '(transient-mark-mode (quote identity)))
@@ -41,10 +45,10 @@
                    "/.emacs.d/")))
   "My home directory.")
 
-(setenv "PATH"
-        (concat (getenv "HOME")
-                "/local/bin" ";"
-                (getenv "PATH")))
+;; (setenv "PATH"
+;;         (concat (getenv "HOME")
+;;                 "/local/bin" ";"
+;;                 (getenv "PATH")))
 
 (dolist (dir '("elpa/"
                "lisp/"
@@ -86,6 +90,10 @@
 ;; Windows specific changes
 (when (eq system-type 'windows-nt)
   (setq magit-git-executable "C:\\Program Files (x86)\\Git\\bin\\git.exe"))
+
+;; School specific changes
+(when (file-accessible-directory-p "/home/shannog")
+  (add-to-list 'exec-path "/home/shannog/local/bin"))
 
 ;; CEDET/Semantic Setup
 (require 'semantic/ia)
@@ -196,6 +204,7 @@
                  clojure-mode
                  csharp-mode
                  clojure-test-mode
+                 clojure-cheatsheet
                  erefactor
                  flymake-php
                  gnuplot
