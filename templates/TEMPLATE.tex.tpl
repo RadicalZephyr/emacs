@@ -2,46 +2,19 @@
 
 %% Author: (>>>AUTHOR<<<)
 
-\documentclass[12pt]{article}
+\documentclass[paper=a4,fontsize=11pt]{scrartcl}
 
-\newcommand{\name}{ Geoff Shannon }
-\newcommand{\problemset}{ (>>>POINT<<<) }
+\usepackage{amsmath,amsfonts,amsthm}
+\usepackage[pdftex]{graphicx}
+\usepackage[svgnames]{xcolor}
+\usepackage{geometry}
+     \textheight=700px
+\usepackage{url}
+\usepackage{wrapfig}
 
-\usepackage[dvips]{graphics,color}
-\usepackage{amsfonts}
-\usepackage{amssymb}
-\usepackage{amsmath}
-\usepackage{latexsym}
-\usepackage{enumerate}
-
-\setlength{\parskip}{1pc}
-\setlength{\parindent}{0pt}
-\setlength{\topmargin}{-3pc}
-\setlength{\textheight}{9.5in}
-\setlength{\oddsidemargin}{0pc}
-\setlength{\evensidemargin}{0pc}
-\setlength{\textwidth}{6.5in}
+\author{ (>>>AUTHOR<<<) }
 
 \begin{document}
 
-%%%%##########################################################################
-
-\framebox{
-  \vbox{
-    CS405 \hfill {\bf \problemset}
-    \hfill \\
-    \name \hfill \today \\
-  }
-}
-\bigskip
-
-%%%%##########################################################################
-
-
-\section{(>>>1<<<)}
-
-
-
-%%%%##########################################################################
 
 \end{document}
