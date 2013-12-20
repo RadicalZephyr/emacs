@@ -8,7 +8,6 @@
  '(global-font-lock-mode t nil (font-lock))
  '(inhibit-startup-screen t)
  '(iswitchb-mode t)
- '(nrepl-server-command "/home/shannog/local/bin/lein repl :headless")
  '(nxml-child-indent 2 t)
  '(rng-schema-locating-files
    (quote
