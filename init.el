@@ -143,7 +143,8 @@
 
 ;; Enable some modes
 (dolist (mode '(column-number-mode
-                global-linum-mode))
+                global-linum-mode
+                toggle-frame-maximized))
   (when (fboundp mode)
     (funcall mode)))
 
