@@ -199,7 +199,6 @@
 ;; Make sure extra packages are installed
 (dolist (pname '(
                  ;; Great utilities
-                 autopair
                  magit
                  smart-tab
                  smartparens
@@ -232,12 +231,8 @@
   (when (not (package-installed-p pname))
     (package-install pname)))
 
-;; autopair
-(require 'autopair)
-
 (add-hook 'c-mode-common-hook
           (lambda ()
-            (autopair-mode)
             (add-to-list 'ac-sources
                          'ac-source-semantic)))
 
@@ -245,9 +240,7 @@
 (add-hook 'csharp-mode-hook
           (lambda ()
             (setq indent-tabs-mode t)
-            (set (make-local-variable 'compile-command) "xbuild")
-            (push ?{
-                  (getf autopair-dont-pair :never))))
+            (set (make-local-variable 'compile-command) "xbuild")))
 
 ;; nREPL
 (setq nrepl-hide-special-buffers t)
