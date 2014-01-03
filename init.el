@@ -231,6 +231,8 @@
   (when (not (package-installed-p pname))
     (package-install pname)))
 
+(smartparens-global-mode t)
+
 (add-hook 'c-mode-common-hook
           (lambda ()
             (add-to-list 'ac-sources
