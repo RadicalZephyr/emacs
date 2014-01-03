@@ -4,20 +4,18 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(case-fold-search t)
+ '(custom-safe-themes (quote ("8eef22cd6c122530722104b7c82bc8cdbb690a4ccdd95c5ceec4f3efa5d654f5" "fc5fcb6f1f1c1bc01305694c59a1a861b008c534cae8d0e48e4d5e81ad718bc6" default)))
  '(ecb-options-version "2.40")
  '(global-font-lock-mode t nil (font-lock))
  '(inhibit-startup-screen t)
+ '(iswitchb-buffer-ignore (quote ("^ ")))
  '(iswitchb-mode t)
  '(nxml-child-indent 2 t)
- '(rng-schema-locating-files
-   (quote
-    ("schemas.xml" "/usr/share/emacs/24.1.50/etc/schema/schemas.xml" "~/.emacs.d/xml/schemas.xml")))
+ '(rng-schema-locating-files (quote ("schemas.xml" "/usr/share/emacs/24.1.50/etc/schema/schemas.xml" "~/.emacs.d/xml/schemas.xml")))
  '(ruby-indent-level 2)
  '(safe-local-variable-values (quote ((Syntax . ANSI-Common-Lisp) (Base . 10))))
  '(save-place t nil (saveplace))
- '(semantic-default-submodes
-   (quote
-    (global-semantic-decoration-mode global-semantic-idle-scheduler-mode global-semanticdb-minor-mode global-semantic-idle-local-symbol-highlight-mode)))
+ '(semantic-default-submodes (quote (global-semantic-decoration-mode global-semantic-idle-scheduler-mode global-semanticdb-minor-mode global-semantic-idle-local-symbol-highlight-mode)))
  '(show-paren-mode t nil (paren))
  '(text-mode-hook (quote (turn-on-auto-fill text-mode-hook-identify)))
  '(transient-mark-mode (quote identity)))
@@ -199,22 +197,36 @@
 (package-refresh-contents)
 
 ;; Make sure extra packages are installed
-(dolist (pname '(autopair
-                 batch-mode
+(dolist (pname '(
+                 ;; Great utilities
+                 autopair
+                 magit
+                 smart-tab
+                 smartparens
+
+                 ;; Clojure
                  clojure-mode
-                 csharp-mode
                  clojure-test-mode
                  clojure-cheatsheet
-                 erefactor
-                 flymake-php
-                 gnuplot
-                 inf-ruby
-                 magit
                  nrepl
                  nrepl-ritz
                  paredit
+
+                 ;; PHP
+                 flymake-php
                  php-mode
-                 smart-tab
+
+                 ;; Ruby
+                 inf-ruby
+                 rinari
+                 yari
+                 ruby-tools
+
+                 ;; Other cool stuff
+                 batch-mode
+                 erefactor
+                 gnuplot
+                 csharp-mode
                  markdown-mode
                  markdown-mode+))
   (when (not (package-installed-p pname))
