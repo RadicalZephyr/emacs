@@ -261,10 +261,14 @@
 (add-hook 'ruby-mode-hook 'inf-ruby-setup-keybindings)
 
 ;; Lisp mode setups
-(add-hook 'emacs-lisp-mode-hook 'paredit-mode)
-(add-hook 'scheme-mode-hook 'paredit-mode)
-(add-hook 'lisp-mode-hook 'paredit-mode)
-(add-hook 'clojure-mode-hook 'paredit-mode)
+(defun ez-paredit-no-smartparens ()
+  (smartparens-mode -1)
+  (paredit-mode t))
+
+(add-hook 'emacs-lisp-mode-hook 'ez-paredit-no-smartparens)
+(add-hook 'scheme-mode-hook 'ez-paredit-no-smartparens)
+(add-hook 'lisp-mode-hook 'ez-paredit-no-smartparens)
+(add-hook 'clojure-mode-hook 'ez-paredit-no-smartparens)
 
 ;; (load "slime.el")
 
