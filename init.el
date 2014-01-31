@@ -202,6 +202,7 @@
                  magit
                  smart-tab
                  smartparens
+                 exec-path-from-shell
 
                  ;; Clojure
                  clojure-mode
@@ -230,6 +231,9 @@
                  markdown-mode+))
   (when (not (package-installed-p pname))
     (package-install pname)))
+
+(when (memq window-system '(mac ns))
+  (exec-path-from-shell-initialize))
 
 (smartparens-global-mode t)
 
