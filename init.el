@@ -205,6 +205,8 @@
                  exec-path-from-shell
 
                  ;; Clojure
+                 ac-cider-compliment
+                 cider
                  clojure-mode
                  clojure-test-mode
                  clojure-cheatsheet
