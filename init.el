@@ -276,6 +276,9 @@
 (add-hook 'lisp-mode-hook 'ez-paredit-no-smartparens)
 (add-hook 'clojure-mode-hook 'ez-paredit-no-smartparens)
 
+(add-hook 'text-mode-hook (lambda ()
+                            (smartparens-mode -1)
+                            (flyspell-mode 1)))
 ;; (load "slime.el")
 
 ;; (slime-setup '(slime-repl))
