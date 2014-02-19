@@ -234,8 +234,7 @@
   (when (not (package-installed-p pname))
     (package-install pname)))
 
-(when (memq window-system '(mac ns))
-  (exec-path-from-shell-initialize))
+(exec-path-from-shell-initialize)
 
 (smartparens-global-mode t)
 
