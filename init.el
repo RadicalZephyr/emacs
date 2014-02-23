@@ -51,7 +51,6 @@
                "lisp/"
                "color-theme/"
                "auto-complete/"
-               "python-mode.el-6.0.4/"
                "ecb-2.4.1/"
                "jdee-2.4.0.1/lisp/"
                "jdibug/"))
@@ -104,11 +103,6 @@
 (setq template-default-directories
       (cons (concat emacs-root "templates/")
             template-default-directories))
-
-;; Setup python-mode
-(setq py-install-directory
-      (concat emacs-root "python-mode.el-6.0.4/"))
-;;(require 'python-mode)
 
 ;; Setup auto-complete
 (require 'auto-complete-config)
