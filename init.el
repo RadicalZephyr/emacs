@@ -50,10 +50,7 @@
 (dolist (dir '("elpa/"
                "lisp/"
                "color-theme/"
-               "auto-complete/"
-               "ecb-2.4.1/"
-               "jdee-2.4.0.1/lisp/"
-               "jdibug/"))
+               "auto-complete/"))
   (add-to-list 'load-path
                (concat emacs-root dir)))
 
