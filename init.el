@@ -152,25 +152,10 @@
 
 (require 'cc-mode)
 
-(defun flymake-next-error ()
-  (interactive)
-  (if (ignore-errors (next-error)) t
-    (flymake-goto-next-error)))
-
 (define-key c-mode-base-map (kbd "RET") 'newline-and-indent)
-(define-key c-mode-base-map (kbd "C-x `") 'flymake-next-error)
-
-;; flymake setups
-(when (not (boundp 'flymake-buildfile-dirs))
-  (setq flymake-buildfile-dirs '()))
-
-(setq flymake-buildfile-dirs
- (append '("build") flymake-buildfile-dirs))
 
 (require 'erlang)
-(require 'flymake-cursor)
 (require 'face-list)
-(require 'flymake-ecj)
 
 (require 'ws-trim)
 (set-default 'ws-trim-level 3)
@@ -269,15 +254,6 @@
 (add-hook 'text-mode-hook (lambda ()
                             (smartparens-mode -1)
                             (flyspell-mode 1)))
-;; (load "slime.el")
-
-;; (slime-setup '(slime-repl))
-
-;; (when
-;;     (load "slime.el")
-;;   (slime-setup '(slime-repl))
-;;   (setq inferior-lisp-program "sbcl")
-;;   (ansi-color-for-comint-mode-on))
 
 (put 'narrow-to-region 'disabled nil)
 
