@@ -200,6 +200,11 @@
                  yari
                  ruby-tools
 
+                 ;; flycheck
+                 flycheck
+                 flycheck-tip
+                 flycheck-color-mode-line
+
                  ;; Other cool stuff
                  batch-mode
                  erefactor
