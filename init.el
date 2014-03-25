@@ -210,6 +210,7 @@
                  erefactor
                  gnuplot
                  csharp-mode
+                 fsharp-mode
                  markdown-mode
                  markdown-mode+))
   (when (not (package-installed-p pname))
