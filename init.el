@@ -206,6 +206,7 @@
                  flycheck-color-mode-line
 
                  ;; Other cool stuff
+                 android-mode
                  batch-mode
                  erefactor
                  gnuplot
@@ -264,3 +265,7 @@
 (put 'narrow-to-region 'disabled nil)
 
 (ansi-color-for-comint-mode-on)
+
+;; Android mode setup
+(require 'android-mode)
+(setq android-mode-sdk-dir (concat (getenv "HOME") "/local/android-sdk-linux"))
