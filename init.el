@@ -29,17 +29,14 @@
 (require 'cl)
 
 (defvar emacs-root
-  (cond ((file-accessible-directory-p
-          "/home/shannog/.emacs.d/")
-         "/home/shannog/.emacs.d/")
-        ((file-accessible-directory-p
-          "c:/cygwin/home/geoff/.emacs.d/")
-         "c:/cygwin/home/geoff/.emacs.d/")
-        ((file-accessible-directory-p
-          "/Users/geoff/.emacs.d/")
-         "/Users/geoff/.emacs.d/")
-        (t (concat (getenv "HOME")
-                   "/.emacs.d/")))
+  (catch 'root
+    (dolist (home-dir '("/home/shannog/.emacs.d/"
+                        "c:/cygwin/home/geoff/.emacs.d/"
+                        "/Users/geoff/.emacs.d/"))
+      (if (file-accessible-directory-p home-dir)
+          (throw 'root home-dir)))
+    (concat (getenv "HOME")
+            "/.emacs.d/"))
   "My home directory.")
 
 ;; (setenv "PATH"
