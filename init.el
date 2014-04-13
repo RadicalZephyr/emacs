@@ -43,11 +43,6 @@
             "/.emacs.d/"))
   "My home directory.")
 
-;; (setenv "PATH"
-;;         (concat (getenv "HOME")
-;;                 "/local/bin" ";"
-;;                 (getenv "PATH")))
-
 (dolist (dir '("elpa/"
                "lisp/"
                "auto-complete/"))
