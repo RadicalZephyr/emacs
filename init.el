@@ -8,8 +8,6 @@
  '(ecb-options-version "2.40")
  '(global-font-lock-mode t nil (font-lock))
  '(inhibit-startup-screen t)
- '(iswitchb-buffer-ignore (quote ("^ ")))
- '(iswitchb-mode t)
  '(nxml-child-indent 2 t)
  '(rng-schema-locating-files (quote ("schemas.xml" "/usr/share/emacs/24.1.50/etc/schema/schemas.xml" "~/.emacs.d/xml/schemas.xml")))
  '(ruby-indent-level 2)
@@ -65,6 +63,8 @@
 
 (require 'ezephyr-dark)
 (require 'ezephyr-dark-nw)
+(require 'ido)
+(ido-mode t)
 
 (load-file (concat emacs-root "macros/tools.macs"))
 
@@ -103,9 +103,6 @@
 (add-to-list 'ac-dictionary-directories
              (concat emacs-root "auto-complete/ac-dict"))
 (ac-config-default)
-
-;; Setup iswitchb-mode
-(add-to-list 'iswitchb-buffer-ignore "*Messages*")
 
 (setq completion-ignored-extensions
       (append '(".ali" ".exe" ".beam")
