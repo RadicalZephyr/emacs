@@ -11,9 +11,7 @@
  '(global-font-lock-mode t)
  '(inhibit-startup-screen t)
  '(nxml-child-indent 2 t)
- '(rng-schema-locating-files
-   (quote
-    ("schemas.xml" "/usr/share/emacs/24.1.50/etc/schema/schemas.xml" "~/.emacs.d/xml/schemas.xml")))
+ '(rng-schema-locating-files (quote ("schemas.xml" "~/.emacs.d/xml/schemas.xml")))
  '(ruby-indent-level 2)
  '(safe-local-variable-values (quote ((Syntax . ANSI-Common-Lisp) (Base . 10))))
  '(save-place t nil (saveplace))
