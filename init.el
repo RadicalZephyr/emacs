@@ -194,6 +194,14 @@
                  flycheck-tip
                  flycheck-color-mode-line
 
+                 ;; auto-complete sources
+                 ac-c-headers
+                 ac-etags
+                 ac-inf-ruby
+                 ac-ispell
+                 ac-math
+                 ac-octave
+
                  ;; Other cool stuff
                  android-mode
                  batch-mode
