@@ -162,6 +162,7 @@
 ;; Make sure extra packages are installed
 (dolist (pname '(
                  ;; Great utilities
+                 color-theme
                  magit
                  smart-tab
                  smartparens
@@ -203,6 +204,10 @@
                  markdown-mode+))
   (when (not (package-installed-p pname))
     (package-install pname)))
+
+(require 'color-theme)
+(color-theme-initialize)
+(load-theme 'radical-zephyr)
 
 (exec-path-from-shell-initialize)
 
