@@ -1,19 +1,18 @@
 (deftheme radical-zephyr
-  "Created 2014-04-12.")
+  "A dark-background, high-pop theme.")
 
 (custom-theme-set-variables
  'radical-zephyr
  '(case-fold-search t)
- '(custom-safe-themes (quote ("8eef22cd6c122530722104b7c82bc8cdbb690a4ccdd95c5ceec4f3efa5d654f5" "fc5fcb6f1f1c1bc01305694c59a1a861b008c534cae8d0e48e4d5e81ad718bc6" default)))
  '(inhibit-startup-screen t)
- '(nxml-child-indent 2)
- '(ruby-indent-level 2)
- '(semantic-default-submodes (quote (global-semantic-decoration-mode global-semantic-idle-scheduler-mode global-semanticdb-minor-mode global-semantic-idle-local-symbol-highlight-mode)))
- '(text-mode-hook (quote (turn-on-auto-fill text-mode-hook-identify)))
  '(save-place t)
  '(global-font-lock-mode t)
  '(show-paren-mode t)
- '(transient-mark-mode (quote identity)))
+ '(transient-mark-mode (quote identity))
+ '(nxml-child-indent 2)
+ '(ruby-indent-level 2)
+ '(semantic-default-submodes (quote (global-semantic-decoration-mode global-semantic-idle-scheduler-mode global-semanticdb-minor-mode global-semantic-idle-local-symbol-highlight-mode)))
+ '(text-mode-hook (quote (turn-on-auto-fill text-mode-hook-identify))))
 
 (custom-theme-set-faces
  'radical-zephyr
@@ -32,7 +31,8 @@
  '(font-lock-string-face ((t (:foreground "#aca000"))))
  '(font-lock-type-face ((t (:bold t :foreground "#77608c"))))
  '(font-lock-variable-name-face ((t (:bold t :foreground "#ffffff"))))
- '(font-lock-warning-face ((t (:bold t :italic nil :underline nil :foreground "yellow"))))
+ '(font-lock-warning-face ((t (:bold t :italic nil :underline nil
+                                       :foreground "yellow"))))
  '(default ((t (:foreground "#b9d3cf" :background "#282828")))))
 
 (provide-theme 'radical-zephyr)
