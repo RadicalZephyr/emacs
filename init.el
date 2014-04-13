@@ -4,17 +4,23 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(case-fold-search t)
- '(custom-safe-themes (quote ("8eef22cd6c122530722104b7c82bc8cdbb690a4ccdd95c5ceec4f3efa5d654f5" "fc5fcb6f1f1c1bc01305694c59a1a861b008c534cae8d0e48e4d5e81ad718bc6" default)))
+ '(custom-safe-themes
+   (quote
+    ("055e43df1a6967dd5d3f1357d0f3cda760f62541126060b3ddca9669f5e20482" "ad06bbe48f822bfa95aa7a4a044ce8eaf7b0db451f65b244e14f570bca54e470" "c6b7c92adcfaaffb80aeb40a9cdc148c1c611b140b5ea688d4f1f6b6126a82de" "0262094599f152ee41bc25258ae0eda8295a3dc059cc15eb556362c34a6879d9" "991fc620ade556cd16ec59d84363fd23c72526cd0a7e64782288874fe1975c2a" "56e75c33f182f455c5bfa65a352cb4e6fead646d1b63a93ccbf64957a2f4b1a0" "8eef22cd6c122530722104b7c82bc8cdbb690a4ccdd95c5ceec4f3efa5d654f5" "fc5fcb6f1f1c1bc01305694c59a1a861b008c534cae8d0e48e4d5e81ad718bc6" default)))
  '(ecb-options-version "2.40")
- '(global-font-lock-mode t nil (font-lock))
+ '(global-font-lock-mode t)
  '(inhibit-startup-screen t)
  '(nxml-child-indent 2 t)
- '(rng-schema-locating-files (quote ("schemas.xml" "/usr/share/emacs/24.1.50/etc/schema/schemas.xml" "~/.emacs.d/xml/schemas.xml")))
+ '(rng-schema-locating-files
+   (quote
+    ("schemas.xml" "/usr/share/emacs/24.1.50/etc/schema/schemas.xml" "~/.emacs.d/xml/schemas.xml")))
  '(ruby-indent-level 2)
  '(safe-local-variable-values (quote ((Syntax . ANSI-Common-Lisp) (Base . 10))))
  '(save-place t nil (saveplace))
- '(semantic-default-submodes (quote (global-semantic-decoration-mode global-semantic-idle-scheduler-mode global-semanticdb-minor-mode global-semantic-idle-local-symbol-highlight-mode)))
- '(show-paren-mode t nil (paren))
+ '(semantic-default-submodes
+   (quote
+    (global-semantic-decoration-mode global-semantic-idle-scheduler-mode global-semanticdb-minor-mode global-semantic-idle-local-symbol-highlight-mode)))
+ '(show-paren-mode t)
  '(text-mode-hook (quote (turn-on-auto-fill text-mode-hook-identify)))
  '(transient-mark-mode (quote identity)))
 (custom-set-faces
