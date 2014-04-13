@@ -44,7 +44,6 @@
 
 (dolist (dir '("elpa/"
                "lisp/"
-               "color-theme/"
                "auto-complete/"))
   (add-to-list 'load-path
                (concat emacs-root dir)))
@@ -61,8 +60,6 @@
 (require 'ezephyr-lisp-tools "tools.el")
 (require 'ezephyr-latex-tools "latex-tools.el")
 
-(require 'ezephyr-dark)
-(require 'ezephyr-dark-nw)
 (require 'ido)
 (ido-mode t)
 
@@ -139,10 +136,6 @@
     (funcall mode -1)))
 
 (setq visible-bell t)
-
-(if window-system
-    (color-theme-ezephyr-dark)
-  (color-theme-ezephyr-dark-nw))
 
 (require 'cc-mode)
 
